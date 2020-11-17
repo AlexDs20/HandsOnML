@@ -1,0 +1,83 @@
+% Specifies the type of document you have.
+\documentclass{book}
+\usepackage{array}
+\renewcommand{\arraystretch}{1.5}
+%------------------------------
+
+%------------------------------
+
+\title{Notes on: "Hands-On Machine Learning with Scikit-Learn \& TensorFlow"}
+\author{Alexandre De~Spiegeleer}
+
+\begin{document}
+\maketitle
+
+%----------------------------------------
+\chapter{The machine learning landscape}
+%----------------------------------------
+
+\section{Categories of ML}
+Different categories of ML algorithms:
+
+\begin{tabular}{p{0.20\textwidth}p{0.40\textwidth}p{0.4\textwidth}}
+  \textbf{Properties} & \textbf{Descrition} & \textbf{Examples} \\
+  \hline
+  Supervised &  Need laballed training data & kNN, Linear Reg., Logistic Reg., SVM, Decision Tree, \ldots \\
+  Unsupervised & No labelled data, the algorithm puts similar data together & Clustering: k-means, HCA. Dimensional reduction: t-SNE\\
+  Semi-Supervised & Both labelled and not labelled data & Deepd belief network, restricted Boltzman machine \\
+  Reinforcment Learning & In the learning process give rewards or penalites depending on the action done & \\
+  \hline\hline
+  Batch Learning & Trains using ALL data $\rightarrow$ If needs to retrain, need to train on all the data again & \\
+  Online Learning & Train by mini-batches: Train incrementally and can start again from a previous minibatch run & \\
+  \hline\hline
+  Instance Based & On new data, check distance to known data and assign same output &\\
+  Model-based & Use the data to make predictions / interpolates to new data & \\
+\end{tabular}
+
+\section{Challenges}
+
+\subsection{data}
+\begin{tabular}{p{0.25\textwidth}|p{0.75\textwidth}}
+  Not enough data & Simple problems $\rightarrow$ min.\ thousands of examples.\\
+  Non representative data & Data used for training must include similar data to those for predictions. (Poor extrapolation capacity) \\
+  Sampling bias & if the sampled data are not representative. \\
+  Poor quality data & if errors, outliers and noise in data \\
+  Irrelevant features & There should be enough relevant features and not much crap.
+\end{tabular}
+
+\subsection{algorithm}
+\begin{tabular}{p{0.25\textwidth}|p{0.75\textwidth}}
+  Overfitting & $\rightarrow$ Lose predictability. Occurs because model too complex compared to data. \\
+  Underfitting & Model too simple compared to the data to be represented
+\end{tabular}
+
+\begin{itemize}
+  \item \textit{Regularization}\\
+    $\rightarrow$ Making a model simpler to avoid
+  \item \textit{Hyperparameter}\\
+    $\rightarrow$ Parameters of  the learning algorithm that dictates the amount of regularization.
+\end{itemize}
+
+\section{Evaluating performance}
+
+Split the data into training set (80\%) and testing set (20\%).
+Evaluation on the test set gives an estimate of the error on unseen data.
+When training multiple models on the training set and testing them on the test sets, our selection of the "best" model is which model best fits the test data set.
+$\rightarrow$ Model cannot necessarily be good on new data.
+Thus, keep a validation set.
+
+\begin{enumerate}
+  \item Train multiple models with different Hyperparameter on the training set
+  \item Select the model that performs best on the test set.
+  \item Verify that the model is indeed good on the validation set
+\end{enumerate}
+
+It is common to split the training set to train several models on sub-sets of the training set and train one final model on the whole training set.
+
+%----------------------------------------
+\chapter{End-to-end machine learning project}
+%----------------------------------------
+
+
+
+\end{document}
