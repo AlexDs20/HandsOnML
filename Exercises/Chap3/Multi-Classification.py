@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 from sklearn.datasets import fetch_openml
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, f1_score
 
 from sklearn.svm import SVC
 from sklearn.multiclass import OneVsRestClassifier, OneVsOneClassifier
@@ -17,6 +17,7 @@ from sklearn.neighbors import KNeighborsClassifier
 
 def plot_digit(digit):
     image = digit.reshape(28, 28)
+    plt.imshow(image, cmap=plt.cm.gray)
     plt.axis("off")
     plt.show()
 
@@ -41,7 +42,7 @@ def load_model(path_model, str):
     return joblib.load(p)
 
 
-def preprocessing(mnist):
+def preprocessing(mnist, scaling=False):
     X, y = mnist["data"], mnist["target"]
     y = y.astype(np.uint8)  # Convert from string to int
 
@@ -49,8 +50,9 @@ def preprocessing(mnist):
     y_train, y_test = y[:60000], y[60000:]
 
     # Scaling
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train.astype(np.float64))
+    if scaling:
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train.astype(np.float64))
 
     return X_train, y_train, X_test, y_test
 
@@ -160,7 +162,7 @@ if __name__ == '__main__':
     mnist = import_mnist(path_data, download=dl)
 
     # Preprocessing
-    X_train, y_train, X_test, y_test = preprocessing(mnist)
+    X_train, y_train, X_test, y_test = preprocessing(mnist, scaling=False)
 
     # Choose model
     train = False
@@ -200,17 +202,18 @@ if __name__ == '__main__':
     #--------------------------
     # MULTILABEL CLASSIFICATION
     #--------------------------
-    y_train_large = (y_train > 7)
-    y_train_odd = (y_train % 2 == 1)
-    y_multilabel = np.c_[y_train_large, y_train_odd]    # Concatenate
+    if False:
+        y_train_large = (y_train > 7)
+        y_train_odd = (y_train % 2 == 1)
+        y_multilabel = np.c_[y_train_large, y_train_odd]    # Concatenate
 
-    model = select_model(path_model, train=False, save=False, model='KNN', X=X_train, y=y_multilabel)
-    # show_img(model, X_train, y_train, 900)
-    # To evaluate the model -> different possibilities
-    # -> e.g. use the binary classifier metric and average over the labels
-    # ex, for the F1 score:
-    y_train_knn_pred = cross_val_predict(model, X_train, y_multilabel, cv=3)
-    f1_score(y_multilabel, y_train_knn_pred, average="macro")
+        model = select_model(path_model, train=False, save=False, model='KNN', X=X_train, y=y_multilabel)
+        # show_img(model, X_train, y_train, 900)
+        # To evaluate the model -> different possibilities
+        # -> e.g. use the binary classifier metric and average over the labels
+        # ex, for the F1 score:
+        y_train_knn_pred = cross_val_predict(model, X_train, y_multilabel, cv=3)
+        f1_score(y_multilabel, y_train_knn_pred, average="macro")
 
     #---------------------------
     # MULTIOUTPUT CLASSIFICATION
@@ -218,16 +221,18 @@ if __name__ == '__main__':
     # Generalisation of multilabel classification
     # -> each label can be multiclass -> more than 2 possible values
     # Here, denoising images -> multi-label (each pixel), multi-class (different int per pixel)
+    if True:
+        noise = np.random.randint(0, 100, (len(X_train), 28 * 28))
+        X_train_mod = X_train + noise
+        noise = np.random.randint(0, 100, (len(X_test), 28 * 28))
+        X_test_mod = X_test + noise
 
-    noise = np.random.randint(0, 100, (len(X_train), 28 * 28))
-    X_train_mod = X_train + noise
-    noise = np.random.randint(0, 100, (len(X_test), 28 * 28))
-    X_test_mod = X_test + noise
+        y_train_mod = X_train
+        y_test_mod = X_test
 
-    y_train_mod = X_train
-    y_test_mod = X_test
-
-    model = select_model(path_model, train=True, save=False, model='KNN', X=X_train_mod, y=y_train_mod)
-    clean_digit = model.predict([X_test_mod[0]])
-    plot_digit(X_test_mod[0])
-    plot_digit(clean_digit)
+        model = KNeighborsClassifier()
+        model.fit(X_train_mod, y_train_mod)
+        joblib.dump(model, 'KNN.pkl')
+        clean_digit = model.predict([X_test_mod[0]])
+        plot_digit(X_test_mod[0])
+        plot_digit(clean_digit)
