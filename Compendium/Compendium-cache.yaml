@@ -71,7 +71,7 @@ options:
   intermediatePostScript: false
 files:
   dicy-instance.yaml-ParsedYAML:
-    timeStamp: 2020-10-14T07:47:11.091Z
+    timeStamp: 2020-11-26T14:18:21.436Z
     jobNames: []
     value:
       severity: info
@@ -130,26 +130,26 @@ files:
       intermediatePostScript: false
     type: ParsedYAML
   Compendium.tex:
-    timeStamp: 2020-10-14T07:47:49.019Z
+    timeStamp: 2020-11-26T18:50:07.865Z
     jobNames: []
-    hash: 3TTiZrX85dlfP7lw/ruFwNq6j1PfznUK7xhz3zr0w4I=
+    hash: JNYlHA1PwLwKpk1CoXKtKMxLBDu4uewFe8tMGdbuUsw=
     type: LaTeX
-    subType: book
+    subType: article
   /home/alexandre/.config/dicy/config.yaml:
-    timeStamp: 2020-10-14T07:47:11.099Z
+    timeStamp: 2020-11-26T14:18:21.441Z
     jobNames: []
     type: YAML
   x.y-Nil:
     jobNames: []
     type: Nil
   Compendium.log:
-    timeStamp: 2020-10-14T07:47:49.306Z
+    timeStamp: 2020-11-26T18:50:08.241Z
     jobNames: []
-    hash: nRvgcwne08jFTXZvbt8Yep6Ndme21R2rYfevWE3OpSg=
+    hash: M5BfnBgZcfI/+QSYAvtpXK9Swtj5Fcw2WP5wLhY/AA4=
     type: LaTeXLog
     subType: pdfTeX
   Compendium.fls-ParsedFileListing:
-    timeStamp: 2020-08-05T09:48:58.341Z
+    timeStamp: 2020-11-25T20:30:15.718Z
     jobNames: []
     value:
       messages: []
@@ -166,7 +166,6 @@ files:
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
-        - /usr/share/texmf-dist/fonts/tfm/public/cm/cmsl10.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
@@ -176,12 +175,15 @@ files:
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
-        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
-        - /usr/share/texmf-dist/tex/latex/base/bk10.clo
-        - /usr/share/texmf-dist/tex/latex/base/book.cls
+        - /usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+        - /usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+        - /usr/share/texmf-dist/tex/latex/base/article.cls
+        - /usr/share/texmf-dist/tex/latex/base/size10.clo
+        - /usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+        - /usr/share/texmf-dist/tex/latex/graphics/keyval.sty
         - /usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
         - /usr/share/texmf-dist/tex/latex/tools/array.sty
         - /usr/share/texmf-dist/web2c/texmf.cnf
@@ -196,7 +198,7 @@ files:
       calls: []
     type: ParsedFileListing
   Compendium.log-ParsedLaTeXLog:
-    timeStamp: 2020-10-14T07:47:49.342Z
+    timeStamp: 2020-11-26T18:49:41.897Z
     jobNames: []
     value:
       messages:
@@ -208,8 +210,48 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 28
-              end: 28
+              start: 27
+              end: 27
+        - name: pdfTeX
+          severity: info
+          text: geometry 2020/01/02 v5.9 Page Geometry
+          source:
+            file: /usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+          log:
+            file: Compendium.log
+            range:
+              start: 36
+              end: 36
+        - name: pdfTeX
+          severity: info
+          text: keyval 2014/10/28 v1.15 key=value parser (DPC)
+          source:
+            file: /usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+          log:
+            file: Compendium.log
+            range:
+              start: 38
+              end: 38
+        - name: pdfTeX
+          severity: info
+          text: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+          source:
+            file: /usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+          log:
+            file: Compendium.log
+            range:
+              start: 41
+              end: 41
+        - name: pdfTeX
+          severity: info
+          text: iftex 2020/03/06 v1.0d TeX engine tests
+          source:
+            file: /usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+          log:
+            file: Compendium.log
+            range:
+              start: 43
+              end: 43
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -217,13 +259,13 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 12
-              end: 12
+              start: 17
+              end: 17
           log:
             file: Compendium.log
             range:
-              start: 41
-              end: 42
+              start: 62
+              end: 63
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -231,13 +273,13 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 12
-              end: 12
+              start: 17
+              end: 17
           log:
             file: Compendium.log
             range:
-              start: 43
-              end: 44
+              start: 64
+              end: 65
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -245,13 +287,13 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 12
-              end: 12
+              start: 17
+              end: 17
           log:
             file: Compendium.log
             range:
-              start: 45
-              end: 46
+              start: 66
+              end: 67
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -259,106 +301,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 12
-              end: 12
-          log:
-            file: Compendium.log
-            range:
-              start: 47
-              end: 48
-        - severity: info
-          name: pdfTeX
-          category: LaTeX Font
-          text: Checking defaults for TS1/cmr/m/n ... okay
-          source:
-            file: Compendium.tex
-            range:
-              start: 12
-              end: 12
-          log:
-            file: Compendium.log
-            range:
-              start: 49
-              end: 50
-        - severity: info
-          name: pdfTeX
-          category: LaTeX Font
-          text: Checking defaults for OMX/cmex/m/n ... okay
-          source:
-            file: Compendium.tex
-            range:
-              start: 12
-              end: 12
-          log:
-            file: Compendium.log
-            range:
-              start: 51
-              end: 52
-        - severity: info
-          name: pdfTeX
-          category: LaTeX Font
-          text: Checking defaults for U/cmr/m/n ... okay
-          source:
-            file: Compendium.tex
-            range:
-              start: 12
-              end: 12
-          log:
-            file: Compendium.log
-            range:
-              start: 53
-              end: 54
-        - severity: info
-          name: pdfTeX
-          category: LaTeX Font
-          text: External font `cmex10' loaded for size <12>.
-          source:
-            file: Compendium.tex
-            range:
-              start: 13
-              end: 13
-          log:
-            file: Compendium.log
-            range:
-              start: 55
-              end: 56
-        - severity: info
-          name: pdfTeX
-          category: LaTeX Font
-          text: External font `cmex10' loaded for size <8>.
-          source:
-            file: Compendium.tex
-            range:
-              start: 13
-              end: 13
-          log:
-            file: Compendium.log
-            range:
-              start: 57
-              end: 58
-        - severity: info
-          name: pdfTeX
-          category: LaTeX Font
-          text: External font `cmex10' loaded for size <6>.
-          source:
-            file: Compendium.tex
-            range:
-              start: 13
-              end: 13
-          log:
-            file: Compendium.log
-            range:
-              start: 59
-              end: 60
-        - severity: info
-          name: pdfTeX
-          category: LaTeX Font
-          text: External font `cmex10' loaded for size <7>.
-          source:
-            file: Compendium.tex
-            range:
-              start: 22
-              end: 22
+              start: 17
+              end: 17
           log:
             file: Compendium.log
             range:
@@ -367,39 +311,150 @@ files:
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: External font `cmex10' loaded for size <5>.
+          text: Checking defaults for TS1/cmr/m/n ... okay
           source:
             file: Compendium.tex
             range:
-              start: 22
-              end: 22
+              start: 17
+              end: 17
           log:
             file: Compendium.log
             range:
               start: 70
               end: 71
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for OMX/cmex/m/n ... okay
+          source:
+            file: Compendium.tex
+            range:
+              start: 17
+              end: 17
+          log:
+            file: Compendium.log
+            range:
+              start: 72
+              end: 73
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Checking defaults for U/cmr/m/n ... okay
+          source:
+            file: Compendium.tex
+            range:
+              start: 17
+              end: 17
+          log:
+            file: Compendium.log
+            range:
+              start: 74
+              end: 75
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: External font `cmex10' loaded for size <12>.
+          source:
+            file: Compendium.tex
+            range:
+              start: 18
+              end: 18
+          log:
+            file: Compendium.log
+            range:
+              start: 110
+              end: 111
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: External font `cmex10' loaded for size <8>.
+          source:
+            file: Compendium.tex
+            range:
+              start: 18
+              end: 18
+          log:
+            file: Compendium.log
+            range:
+              start: 112
+              end: 113
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: External font `cmex10' loaded for size <6>.
+          source:
+            file: Compendium.tex
+            range:
+              start: 18
+              end: 18
+          log:
+            file: Compendium.log
+            range:
+              start: 114
+              end: 115
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: External font `cmex10' loaded for size <7>.
+          source:
+            file: Compendium.tex
+            range:
+              start: 31
+              end: 31
+          log:
+            file: Compendium.log
+            range:
+              start: 119
+              end: 120
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: External font `cmex10' loaded for size <5>.
+          source:
+            file: Compendium.tex
+            range:
+              start: 31
+              end: 31
+          log:
+            file: Compendium.log
+            range:
+              start: 121
+              end: 122
+        - severity: error
+          name: pdfTeX
+          text: Undefined control sequence
+          log:
+            file: Compendium.log
+            range:
+              start: 154
+              end: 155
+          source:
+            file: Compendium.tex
+            range:
+              start: 152
+              end: 152
       inputs: []
       outputs:
         - Compendium.pdf
       calls: []
     type: ParsedLaTeXLog
   Compendium.pdf:
-    timeStamp: 2020-10-14T07:47:49.302Z
+    timeStamp: 2020-11-26T18:50:08.241Z
     jobNames: []
-    hash: RIYdKeDsJanYYKT0/4i9bUXy3NMSMlqx99NRhT3ym3M=
+    hash: 7MfHs8dYbXU+dJS9ijyfdoEk9C2nIk4Ei4rTET76gU0=
     type: PortableDocumentFormat
   Compendium.aux:
-    timeStamp: 2020-10-14T07:47:49.292Z
+    timeStamp: 2020-11-26T18:50:08.225Z
     jobNames: []
-    hash: Ckur3Jh3JoA+rYRkgX2y2/Zio8psRQoIGIq7mbMFNkw=
+    hash: C4ucdciiPOTqkPB0GrsbRZwNpH6Eg3PRjjFlLS1NXfM=
     type: LaTeXAuxilary
   Compendium.fls:
-    timeStamp: 2020-10-14T07:47:49.302Z
+    timeStamp: 2020-11-26T18:50:08.235Z
     jobNames: []
-    hash: MFdhm2vJU45krXUiAInF4fnXt8t7SxxOsWxZSXBE+SA=
+    hash: 93DEc6V8PuUhY5uUn/W089U78t+RYjOsNjHCfLuQlC8=
     type: FileListing
   Compendium.aux-ParsedLaTeXAuxilary:
-    timeStamp: 2020-08-12T11:31:59.446Z
+    timeStamp: 2020-11-26T18:49:41.895Z
     jobNames: []
     value:
       commands:
@@ -433,10 +488,10 @@ files:
     timeStamp: 2020-06-07T15:57:48.000Z
     jobNames: []
   /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map:
-    timeStamp: 2020-09-08T13:24:45.230Z
+    timeStamp: 2020-11-10T18:41:43.739Z
     jobNames: []
   /var/lib/texmf/web2c/pdftex/pdflatex.fmt:
-    timeStamp: 2020-09-08T13:24:32.693Z
+    timeStamp: 2020-11-10T18:41:33.759Z
     jobNames: []
   /usr/share/texmf-dist/fonts/map/fontname/texfonts.map:
     timeStamp: 2020-06-07T15:57:48.000Z
@@ -529,10 +584,26 @@ files:
     timeStamp: 2020-06-07T15:57:48.000Z
     jobNames: []
   Compendium.synctex.gz:
-    timeStamp: 2020-10-14T07:47:49.306Z
+    timeStamp: 2020-11-26T18:50:08.241Z
     jobNames: []
-    hash: SqQeROLMk0A8UA7zDG7ewIXHog6/I16XmYGgfdTTHmc=
+    hash: u4gHFfwkNyyQ3+PfwTMaNfNVcR0rYCcY7dpbPIVDBac=
     type: SyncTeX
+  /usr/share/texmf-dist/tex/generic/iftex/iftex.sty:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texmf-dist/tex/latex/geometry/geometry.sty:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texmf-dist/tex/latex/graphics/keyval.sty:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+    type: LaTeXStyle
 rules:
   - name: ApplyOptions
     command: load
@@ -696,6 +767,14 @@ rules:
       - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
         type: default
       - file: /usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
+        type: default
+      - file: /usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+        type: default
+      - file: /usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+        type: default
+      - file: /usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+        type: default
+      - file: /usr/share/texmf-dist/tex/latex/graphics/keyval.sty
         type: default
     outputs:
       - file: Compendium.pdf

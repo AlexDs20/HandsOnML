@@ -1,29 +1,51 @@
 % Specifies the type of document you have.
-\documentclass{book}
+\documentclass{article}
 \usepackage{array}
+\usepackage{geometry}
 \renewcommand{\arraystretch}{1.5}
+\geometry{
+  a4paper,
+  total={140mm, 217mm}
+}
 %------------------------------
 
 %------------------------------
 
-\title{Notes on: "Hands-On Machine Learning with Scikit-Learn \& TensorFlow"}
+\title{Notes on:\\ "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow"}
 \author{Alexandre De~Spiegeleer}
 
 \begin{document}
 \maketitle
+\newpage
 
 %----------------------------------------
-\chapter{The machine learning landscape}
+\section{The machine learning landscape}
 %----------------------------------------
+ML is nothing more than fitting a model to the known data!
+\subsection{Sturcture of a project}
+\begin{enumerate}
+    \item study the problem
+    \item Train the ML algo (with lots of data)
+    \item Solution
+    \item Check the solution and better understand the problem
+    \item[$\rightarrow$] try to improve model from the observed possible problems
+\end{enumerate}
 
-\section{Categories of ML}
+Examples:
+\begin{itemize}
+    \item Detection of signals in images using CNNs
+    \item Classifying articles: NLP
+\end{itemize}
+
+
+\subsection{Types of ML}
 Different categories of ML algorithms:
 
 \begin{tabular}{p{0.20\textwidth}p{0.40\textwidth}p{0.4\textwidth}}
   \textbf{Properties} & \textbf{Descrition} & \textbf{Examples} \\
   \hline
-  Supervised &  Need laballed training data & kNN, Linear Reg., Logistic Reg., SVM, Decision Tree, \ldots \\
-  Unsupervised & No labelled data, the algorithm puts similar data together & Clustering: k-means, HCA. Dimensional reduction: t-SNE\\
+  Supervised &  Need laballed training data & kNN, Linear Reg., Logistic Reg., SVM, Decision Tree, Random Forest, NN\ldots \\
+  Unsupervised & No labelled data, the algorithm puts similar data together & Clustering: k-means, DBSCAN, HCA. Dimensional reduction: PCA, kernel PCA, LLE, t-SNE. Anomaly detection: One-class SVM, Isolation Forest\\
   Semi-Supervised & Both labelled and not labelled data & Deepd belief network, restricted Boltzman machine \\
   Reinforcment Learning & In the learning process give rewards or penalites depending on the action done & \\
   \hline\hline
@@ -34,31 +56,62 @@ Different categories of ML algorithms:
   Model-based & Use the data to make predictions / interpolates to new data & \\
 \end{tabular}
 
-\section{Challenges}
+\subsubsection{Unsupervised Learning}
+\begin{description}
+    \item[Feature Extraction] Combines related features into a better one (e.g. using PCA)
+    \item[Anomaly Detection] Find anomalies in dataset(e.g.\ removing some outliers)
+    \item[Association rule learning] Discover relationships in large datasets
+\end{description}
 
-\subsection{data}
-\begin{tabular}{p{0.25\textwidth}|p{0.75\textwidth}}
-  Not enough data & Simple problems $\rightarrow$ min.\ thousands of examples.\\
-  Non representative data & Data used for training must include similar data to those for predictions. (Poor extrapolation capacity) \\
-  Sampling bias & if the sampled data are not representative. \\
-  Poor quality data & if errors, outliers and noise in data \\
-  Irrelevant features & There should be enough relevant features and not much crap.
-\end{tabular}
-
-\subsection{algorithm}
-\begin{tabular}{p{0.25\textwidth}|p{0.75\textwidth}}
-  Overfitting & $\rightarrow$ Lose predictability. Occurs because model too complex compared to data. \\
-  Underfitting & Model too simple compared to the data to be represented
-\end{tabular}
-
+\subsubsection{semi-supervised Learning}
+Often much data but only a few are labelled
 \begin{itemize}
-  \item \textit{Regularization}\\
-    $\rightarrow$ Making a model simpler to avoid
-  \item \textit{Hyperparameter}\\
-    $\rightarrow$ Parameters of  the learning algorithm that dictates the amount of regularization.
+  \item[$\rightarrow$] Often combinaison of supervised and unsupervised algo.
 \end{itemize}
 
-\section{Evaluating performance}
+\subsubsection{Reinforcement Learning}
+Trains an agent by giving rewards and penalties to obtained the best policy
+
+\subsection{Challenges}
+\subsubsection{data}
+\begin{description}
+  \item[Lack of data] ML requires lots of data (mininmum thousands of examples).\\
+                      Note that models performances increase with number of data.\\
+                      $\rightarrow$ Choice to work on model or gather more data!
+
+  \item[Non representative data] Data used for training must include similar data to those for predictions. (Poor extrapolation capacity)
+
+  \item[Sampling Bias] non representative data because the sampling is flawed.\\
+          Bias can appear if the proportion of data in different classes are not representative.
+
+  \item[Poor data quality] if errors, outliers and noise in data
+
+  \item[Irrelevant features] There should be enough relevant features and not much crap.
+\end{description}
+
+
+\subsubsection{Fitting}
+\begin{description}
+  \item[Overfitting] The model fits too well the training data. Occurs because model too complex compared to data $\rightarrow$ lose predictability.
+  \item[Underfitting] Model too simple compared to the data to be represented e.g.\ Linear fit on a non-linear problem
+\end{description}
+
+Solutions to overfitting:
+\begin{itemize}
+  \item \textit{Regularization}\\
+    $\rightarrow$ Making the model simpler to avoid by adjusting hyperparameter
+  \item \textit{Hyperparameter}\\
+    $\rightarrow$ Parameters of the learning algorithm that dictates the amount of regularization.
+\end{itemize}
+
+Solutions to underfitting
+\begin{itemize}
+  \item Select a better model
+  \item Have better features
+  \item reduce the constraints on the model (e.g.\ hyperparameters)
+\end{itemize}
+
+\subsection{Evaluating performance}
 
 Split the data into training set (80\%) and testing set (20\%).
 Evaluation on the test set gives an estimate of the error on unseen data.
@@ -66,13 +119,34 @@ When training multiple models on the training set and testing them on the test s
 $\rightarrow$ Model cannot necessarily be good on new data.
 Thus, keep a validation set.
 
+Thus, there are 3 sets of data: Training, Validation and Test
 \begin{enumerate}
   \item Train multiple models with different Hyperparameter on the training set
-  \item Select the model that performs best on the test set.
-  \item Verify that the model is indeed good on the validation set
+  \item Select the model that performs best on the validation set.
+  \item Verify that the model is indeed good on the test set
+  \item Deploy
 \end{enumerate}
 
 It is common to split the training set to train several models on sub-sets of the training set and train one final model on the whole training set.
+
+If the validation set is too small $\rightarrow$ imprecise evaluation of performances.
+The validation set cannot be too large either (compared to training set).\\
+$\rightarrow$ use \emph{cross-validation}: it uses several small validation sets.
+Each model is evaluated once per validation set.
+You can then average the results of the model on the different smaller validation sets.
+
+\subsection{Data mismatch}
+If there are two types of data in the training set (e.g.\ not from the same source).
+This may cause problem in the predictions.
+How to know if overfitting or problem with the data?
+
+Hold part of the training set (data from one of the source) and see how the model performs on that.
+If it performs well $\rightarrow$ the error comes from the mismatched data
+If it performs poorly $\rightarrow$ the error comes from the overfitting
+
+If it is because of the data mismatched, is it possible to preprocess these to be more like the rest of the data?
+
+
 
 %----------------------------------------
 \chapter{End-to-end machine learning project}
