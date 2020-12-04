@@ -388,7 +388,7 @@ if __name__ == '__main__':
     if False:
         feature_importances = grid_search.best_estimator_.feature_importances_
         extra_attribs = ["rooms_per_hhold", "pop_per_hhold", "bedrooms_per_room"]
-        cat_encoder = full_pipeline.named_transformers_["cat"]      # cat part of the pipeline
+        cat_encoder = full_pipeline.named_transformers_["cat"]      # gets the part of the pipeline called 'cat'
         cat_one_hot_attribs = list(cat_encoder.categories_[0])
 
         train_num = train.drop("ocean_proximity", axis=1)

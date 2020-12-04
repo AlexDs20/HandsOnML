@@ -48,7 +48,8 @@ showstringspaces=false            %
 % Python for inline
 \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
 
-
+% No indent
+\setlength\parindent{0pt}
 %------------------------------
 
 \title{Notes on:\\ "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow"}
@@ -460,9 +461,253 @@ Preferably in a way that it is general and can be re-used later on.
             ("cat", OneHotEncoder(), cat_attribs)
             ])
       data_prepared = full_pipeline.fit_transform(data)
-    \end{python}
+    ?\end{python}
 
 \subsection{Select and Train a model}
+\subsubsection*{Training and evaluating on the training set}
+    For example, it is easy to train a model:
+    \begin{python}
+        from sklearn.linear_model import LinearRegression
+
+        lin_reg = LinearRegression()
+        lin_reg.fit(data_prepared, data_labels)
+    \end{python}
+
+    It can then be tried on the training data:
+    \begin{python}
+        # Start by transforming the data through the pipeline!
+        train_data_prepared = full_pipeline.transform(train_data)
+        print("Predictions:", lin_reg.predict(train_data_prepared))
+        print("Labels:", list(train_data_labels))
+    \end{python}
+
+    Error measure using RMSE:
+    \begin{python}
+        from sklearn.metrics import mean_squared_error
+        data_predictions = lin_reg.predict(train_data_prepared)
+        lin_mse = mean_squared_error(train_data_labels)
+        lin_rmse = np.sqrt(lin_mse)
+        print(lin_rmse)
+    \end{python}
+
+    This can give an idea if the model overfitted or underfitted the data during training.
+    If underfitting, 3 solutions:
+    \begin{itemize}
+        \item Chose a more powerful model
+        \item Feed the model better features
+        \item Reduce the constraints on the model (remove regularization)
+    \end{itemize}
+    If overfitting, solutions:
+    \begin{item}
+        \item Simplify the model
+        \item Constrain the model (regularize it)
+        \item Get more data
+    \end{item}
+
+    More complex model:
+    \begin{python}
+        from sklearn.tree import DecisionTreeRegressor
+        tree_reg = DecisionTreeRegressor()
+        tree_reg.fit(train_data_prepared, train_data_labels)
+    \end{python}
+    Can be evaluated on training set using RMSE.
+    If $rmse=0$ $\rightarrow$ overfitting!
+    How can we be sure of overfitting? (\textbf{We cannot use the test set!! This is only to be used in the very end!})
+    We split the train set into train set and validation set.
+
+\subsubsection*{Better evaluation using cross-validation}
+    A way to test whether the model is performing well would be to split the training set into a smaller training set and a validation set.
+
+    The different models could be trained on the smaller training set and evaluated on the evaluation set.
+
+    An alternative is to use \emph{K-fold cross-validation}:\\
+    \begin{itemize}
+        \item it splits the training set into 10 subsets (folds)
+        \item then it trains the model 10 times, everytime using a different fold for the validation and the other 9 folds as the training data.
+    \end{itemize}
+    \begin{python}
+        from sklearn.model_selectoin import cross_val_score
+
+        scores = cross_val_score(model, train_data_prepared, train_data_labels,
+                    scoring="neg_mean_squared_error", cv=10)
+        model_rmse_scores = np.sqrt(-scores)
+
+        def display_scores(scores):
+            print("Scores: " scores)
+            print("Mean: ", scores.mean())
+            print("Standard deviation: ", scores.std())
+
+        display_scores(model_rmse_scores)
+    \end{python}
+
+    Another model can be trained, e.g.\ \emph{RandomForestRegressor} (it trains many decision trees on subsets of features and averages their preidictions).
+    The use of several models on top of each other: \emph{Ensemble Learning}
+    \begin{python}
+        from sklearn.ensemble import RandomForestRegressor
+
+        model = RandomForestRegressor()
+        model.fit(train_data_prepared, train_data_labels)
+        scores = cross_val_score(model, train_data_prepared, train_data_labels,
+                    scoring="neg_mean_squared_error", cv=10)
+        model_rmse_scores = np.sqrt(-scores)
+    \end{python}
+
+    Before deeping into a model (tweaking hyperparameters), try several different and keep the best ones!
+    Typically keep between 2 and 5 models.
+
+    Save:
+    \begin{itemize}
+        \item models
+        \item hyperparameters
+        \item trained parameters
+        \item cross-validation scores
+        \item actuall predictions
+    \end{itemize}
+    This allows to easily compare the different models.
+    \begin{python}
+        import joblib
+
+        joblib.dump(model, 'model.pkl')
+        # model = joblib.load('model.pkl')
+    \end{python}
+
+    \subsection{Fine-tune your model}
+    How to fine-tune:
+    \subsubsection*{Grid Search}
+    Goes through the hyperparameter space and train several models and evaluate.
+    Once all are trained, one can get the best parameters (or just directly the best model)
+
+    \begin{python}
+        from sklearn.model_selection import GridSearchCV
+
+        param_grid = [
+            {'n_estimators': [3,10,30],
+             'max_features': [2,4,6,8]
+            },      # Here: 3x4=12 models to train
+            {'bootstrap':[False],
+             'n_estimators':[3,10],
+             'max_features':[2,3,4]
+            },      # here: 2x3=6 models to train with bootstrap on
+        ]
+
+        model = RandomForestRegressor()
+        grid_search = GridSearchCV(mode, param_grid, cv=5,
+                        scoring='neg_mean_squared_error',
+                        return_train_score=True)
+        grid_search.fit(train_data_prepared, train_data_labels)
+    \end{python}
+    The grid search will do the grid search for each of the dictionaries in \verb;param_grid;.
+
+    The results from each:
+    \begin{python}
+        cvres = grid_search.cv_results_
+        for mean_score, params in zip(["mean_test_score"], cvres["params"]):
+            print(np.sqrt(-mean_score, params))
+    \end{python}
+
+    Get the best:
+    \begin{python}
+        grid_search.best_params_
+        grid_search.best_estimator_
+    \end{python}
+
+    Normal grid search is fine for a small parameter space, otherwise \emph{RandomizedSearchCV} woule be better.
+    It tries random values of the hyperparameters.
+    \begin{python}
+        n_estimators = [int(x) for x in np.linspace(start=250, stop=300, num=2)]
+        max_features = ['auto', 'sqrt']
+        random_grid = {'n_estimators': n_estimators,
+                       'max_features': max_features}
+        model = RandomForestRegressor()
+        model_random = RandomizedSearchCV(estimator=model,
+                                    param_distributions=random_grid,
+                                    n_iter=1000, cv=2, verbose=2,
+                                    random_state=42, n_jobs=-1)
+    \end{python}
+
+    \subsubsection*{Ensemble methods}
+    Combining the best models could perform better $\rightarrow$ Ensemble
+
+    \subsubsection*{Analyze best models and their errors}
+    Looking at the models gives good insights.
+
+    \emph{RandomForestRegressor} can indicate the relative importance of the attributes:
+    \begin{python}
+        # If grid_search using RandomForestRegressor
+        feature_importances = grid_search.best_estimator_.featue_importances_
+
+        # shown next to the features name:
+        extra_attribs = ["extra_attribs"]       # Created in the pipeline by combining the attributes
+        # Extract the attributes created from the categorical attributes using OneHotEncoder
+        cat_encoder = full_pipeline.named_transformers_["cat"]
+        cat_one_hot_attribs = list(cat_encoder.categories_[0])
+        # Concatenate all the attributes
+        attributes = num_attribs + extra_attribs + cat_one_hot_attribs
+
+        sorted(zip(feature_importances, attributes), reverse=True)
+    \end{python}
+
+    One should look at the specific errors made by the model to try to fix those, example:
+    \begin{itemize}
+        \item add extra features
+        \item get rid of uninformative features
+        \item cleaning up outliers
+    \end{itemize}
+
+    \subsubsection*{Evaluate your system on the test set}
+        Time to try the model on the test set.
+        \begin{itemize}
+            \item Get the test data and labels.
+            \item run the \verb;full_pipeline;
+            \item call \verb;.transform();
+        \end{itemize}
+
+        \begin{python}
+            final_model = grid_search.best_estimator_
+
+            X_test = strat_test_set.drop("feature_to_predict", axis=1)
+            y_test = strat_test_set["feature_to_predict"].copy()
+
+            X_test_prepared = full_pipeline.tranform(X_test)
+            final_predictions = final_model.predict(X_test_prepared)
+
+            final_mse = mean_squared_error(y_test, final_predictions)
+            final_rmse = np.sqrt(final_mse)
+        \end{python}
+
+        Can also look at the confidence interval:
+        \begin{python}
+            from scipy import stats
+            confidence = 0.95
+            squared_errors = (final_predictions - y_test) ** 2
+            np.sqrt(stats.t.interval(confidence, len(squared_errors) - 1,
+                                     loc=squared_errors.mean(),
+                                     scale=stats.sem(squared_errors)))
+        \end{python}
+        If the results are worse than on the validation set, DO NOT FINETUNE THE HYPERPARAMETERS TO GET BETTER RESULTS!!
+
+    \subsection{Launch}
+    It is now time to launch, monitor and maintain the system!
+
+    Once it is released:
+
+    Write monitor code to check the live performance regularly and throw allerts if it drops.
+    Drop in performance may be quick (something break) or slow (model "rot" over time because of the newer data beeing a bit different from the older ones).
+
+    The monitoring downstream has to be adapted to the delivered product.
+    $\rightarrow$ Automate the process as much as possible
+    \begin{itemize}
+        \item collect fresh data regularly and label it
+        \item Write script to train the model and fine-tune the hyper-parameters (run e.g.\ everyday)
+        \item Write a script that compares the new and the previous model on the updated test set and deploy the model to production if the performances have not decreased (if it did, why??)
+    \end{itemize}
+
+    Check the input data quality.
+
+    Keep backups of every model!
+    (And have what is necessary to easily move back to a previous model)
+
+    Also keep backups of every version of the datasets (in case the newly added data have a lot of outliers).
 
 
 \end{document}

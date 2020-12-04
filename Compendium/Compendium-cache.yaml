@@ -71,7 +71,7 @@ options:
   intermediatePostScript: false
 files:
   dicy-instance.yaml-ParsedYAML:
-    timeStamp: 2020-12-01T20:36:55.841Z
+    timeStamp: 2020-12-04T13:19:01.637Z
     jobNames: []
     value:
       severity: info
@@ -130,26 +130,26 @@ files:
       intermediatePostScript: false
     type: ParsedYAML
   Compendium.tex:
-    timeStamp: 2020-12-01T22:00:19.355Z
+    timeStamp: 2020-12-04T21:23:54.013Z
     jobNames: []
-    hash: 5fq1L8Sruj5FiTG/kev/17qwx11rHbF08OVq/dapwQM=
+    hash: QfWp1gdrar9Le/c9k2YbpzUidn6T0jB60HXwfVJVKYQ=
     type: LaTeX
     subType: article
   /home/alexandre/.config/dicy/config.yaml:
-    timeStamp: 2020-12-01T19:31:10.088Z
+    timeStamp: 2020-12-04T13:19:01.647Z
     jobNames: []
     type: YAML
   x.y-Nil:
     jobNames: []
     type: Nil
   Compendium.log:
-    timeStamp: 2020-12-01T22:00:20.005Z
+    timeStamp: 2020-12-04T21:23:54.716Z
     jobNames: []
-    hash: HZi19Y0gdy4K1BC1uyR2FcJil2/t414W9pOc6roNopU=
+    hash: WLgBHHjJcqwVSC0tax1VIP/r6vf3yUOxNtyt1zXtXEg=
     type: LaTeXLog
     subType: pdfTeX
   Compendium.fls-ParsedFileListing:
-    timeStamp: 2020-12-01T20:53:14.440Z
+    timeStamp: 2020-12-04T19:39:07.561Z
     jobNames: []
     value:
       messages: []
@@ -171,6 +171,7 @@ files:
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+        - /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/txfonts/t1xbtt.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/txfonts/t1xtt.tfm
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -181,6 +182,7 @@ files:
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
         - /usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb
         - /usr/share/texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb
@@ -190,6 +192,7 @@ files:
         - /usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
         - /usr/share/texmf-dist/tex/latex/base/article.cls
         - /usr/share/texmf-dist/tex/latex/base/omlcmr.fd
+        - /usr/share/texmf-dist/tex/latex/base/omscmr.fd
         - /usr/share/texmf-dist/tex/latex/base/size10.clo
         - /usr/share/texmf-dist/tex/latex/geometry/geometry.sty
         - /usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
@@ -215,7 +218,7 @@ files:
       calls: []
     type: ParsedFileListing
   Compendium.log-ParsedLaTeXLog:
-    timeStamp: 2020-12-01T21:51:29.853Z
+    timeStamp: 2020-12-04T19:39:07.597Z
     jobNames: []
     value:
       messages:
@@ -324,8 +327,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 57
-              end: 57
+              start: 58
+              end: 58
           log:
             file: Compendium.log
             range:
@@ -338,8 +341,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 57
-              end: 57
+              start: 58
+              end: 58
           log:
             file: Compendium.log
             range:
@@ -352,8 +355,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 57
-              end: 57
+              start: 58
+              end: 58
           log:
             file: Compendium.log
             range:
@@ -366,8 +369,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 57
-              end: 57
+              start: 58
+              end: 58
           log:
             file: Compendium.log
             range:
@@ -380,8 +383,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 57
-              end: 57
+              start: 58
+              end: 58
           log:
             file: Compendium.log
             range:
@@ -394,8 +397,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 57
-              end: 57
+              start: 58
+              end: 58
           log:
             file: Compendium.log
             range:
@@ -408,8 +411,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 57
-              end: 57
+              start: 58
+              end: 58
           log:
             file: Compendium.log
             range:
@@ -422,8 +425,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 61
-              end: 61
+              start: 62
+              end: 62
           log:
             file: Compendium.log
             range:
@@ -436,8 +439,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 61
-              end: 61
+              start: 62
+              end: 62
           log:
             file: Compendium.log
             range:
@@ -450,8 +453,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 61
-              end: 61
+              start: 62
+              end: 62
           log:
             file: Compendium.log
             range:
@@ -464,8 +467,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 74
-              end: 74
+              start: 75
+              end: 75
           log:
             file: Compendium.log
             range:
@@ -478,8 +481,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 74
-              end: 74
+              start: 75
+              end: 75
           log:
             file: Compendium.log
             range:
@@ -492,8 +495,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 331
-              end: 331
+              start: 332
+              end: 332
           log:
             file: Compendium.log
             range:
@@ -508,34 +511,122 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 331
-              end: 331
+              start: 332
+              end: 332
           log:
             file: Compendium.log
             range:
               start: 232
               end: 233
+        - severity: error
+          name: pdfTeX
+          text: Lonely \item--perhaps a missing list environment
+          log:
+            file: Compendium.log
+            range:
+              start: 271
+              end: 272
+          source:
+            file: Compendium.tex
+            range:
+              start: 502
+              end: 502
+          category: LaTeX
+        - severity: error
+          name: pdfTeX
+          text: Lonely \item--perhaps a missing list environment
+          log:
+            file: Compendium.log
+            range:
+              start: 289
+              end: 290
+          source:
+            file: Compendium.tex
+            range:
+              start: 502
+              end: 502
+          category: LaTeX
+        - severity: error
+          name: pdfTeX
+          text: Lonely \item--perhaps a missing list environment
+          log:
+            file: Compendium.log
+            range:
+              start: 307
+              end: 308
+          source:
+            file: Compendium.tex
+            range:
+              start: 503
+              end: 503
+          category: LaTeX
+        - severity: error
+          name: pdfTeX
+          text: Lonely \item--perhaps a missing list environment
+          log:
+            file: Compendium.log
+            range:
+              start: 325
+              end: 326
+          source:
+            file: Compendium.tex
+            range:
+              start: 504
+              end: 504
+          category: LaTeX
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: Trying to load font information for OMS+cmr
+          source:
+            file: Compendium.tex
+            range:
+              start: 584
+              end: 584
+          log:
+            file: Compendium.log
+            range:
+              start: 358
+              end: 359
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
+          text: >-
+            Font shape `OMS/cmr/m/n' in size <10> not available Font shape
+            `OMS/cmsy/m/n' tried instead.
+          source:
+            file: Compendium.tex
+            range:
+              start: 584
+              end: 584
+          log:
+            file: Compendium.log
+            range:
+              start: 363
+              end: 364
       inputs: []
       outputs:
         - Compendium.pdf
       calls: []
     type: ParsedLaTeXLog
   Compendium.aux:
-    timeStamp: 2020-12-01T22:00:19.979Z
+    timeStamp: 2020-12-04T21:23:54.690Z
     jobNames: []
-    hash: gWopSql1JnLMWfHAT9AyuSoJnSljdHDGb9JZ7JeGSX0=
+    hash: WxNKfwcmw/7xFJNaC27S9n9fYnIymUfWeg6DJ8Ch/GM=
     type: LaTeXAuxilary
   Compendium.fls:
-    timeStamp: 2020-12-01T22:00:20.002Z
+    timeStamp: 2020-12-04T21:23:54.710Z
     jobNames: []
-    hash: z+5jQP3FexgzOed5rR06BMq4+J+HLTxVIu6HY2bO5rE=
+    hash: Z3iD8ZsaUl/QQVAX9QV6tR0GKUwqFj/dDSDqplr32rY=
     type: FileListing
   Compendium.aux-ParsedLaTeXAuxilary:
-    timeStamp: 2020-12-01T21:55:52.524Z
+    timeStamp: 2020-12-04T20:56:18.467Z
     jobNames: []
     value:
       commands:
         - relax
+        - '@writefile'
+        - '@writefile'
         - '@writefile'
         - '@writefile'
         - '@writefile'
@@ -758,15 +849,19 @@ files:
     timeStamp: 2020-06-07T15:57:48.000Z
     jobNames: []
   Compendium.pdf:
-    timeStamp: 2020-12-01T22:00:20.005Z
+    timeStamp: 2020-12-04T21:23:54.716Z
     jobNames: []
-    hash: gJKLz7jgk7/mxVHGHS75miyJdCMjrU56I+sQIXMN0qc=
+    hash: pPmNxUrk+tGJ5mPRY3VoIGRXdCbsxl8xoo0MEFZ7aJY=
     type: PortableDocumentFormat
   Compendium.synctex.gz:
-    timeStamp: 2020-12-01T22:00:20.005Z
+    timeStamp: 2020-12-04T21:23:54.716Z
     jobNames: []
-    hash: 3147BvfwcOWX/n+JuO9Q+6dmyQ1v6+EbPTRQdDWv8oc=
+    hash: pViyUhxS9cefRKLv7Wnxws+waEuf4TQAVnSXtXem9zA=
     type: SyncTeX
+  /usr/share/texmf-dist/tex/latex/base/omscmr.fd:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+    type: FontDescription
 rules:
   - name: ApplyOptions
     command: load
@@ -984,6 +1079,8 @@ rules:
       - file: /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
         type: default
       - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
+        type: default
+      - file: /usr/share/texmf-dist/tex/latex/base/omscmr.fd
         type: default
     outputs:
       - file: Compendium.aux
