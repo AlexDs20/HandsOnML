@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.11.10)  4 DEC 2020 22:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.11.10)  4 DEC 2020 23:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -168,138 +168,120 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 75.
+(Font)              <7> on input line 76.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 75.
+(Font)              <5> on input line 76.
 
-Underfull \hbox (badness 1194) in paragraph at lines 91--92
+Underfull \hbox (badness 1194) in paragraph at lines 92--93
 []|\OT1/cmr/m/n/10 kNN, Lin-ear Reg., Lo-gis-tic Reg.,
  []
 
 
-Underfull \hbox (badness 4832) in paragraph at lines 92--93
+Underfull \hbox (badness 4832) in paragraph at lines 93--94
 []|\OT1/cmr/m/n/10 Clustering: k-means, DB-SCAN,
  []
 
 
-Underfull \hbox (badness 4543) in paragraph at lines 93--94
+Underfull \hbox (badness 4543) in paragraph at lines 94--95
 []|\OT1/cmr/m/n/10 Deepd be-lief net-work, re-stricted
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\OT1/cmr/m/n/10 Reinforcment
  []
 
 
-Underfull \hbox (badness 1540) in paragraph at lines 99--99
+Underfull \hbox (badness 1540) in paragraph at lines 100--100
 []|\OT1/cmr/m/n/10 On new data, check dis-tance to
  []
 
 
-Overfull \hbox (35.9939pt too wide) in paragraph at lines 88--102
+Overfull \hbox (35.9939pt too wide) in paragraph at lines 89--103
 [][] 
  []
 
 [2] [3] [4] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) [5]
-Underfull \hbox (badness 10000) in paragraph at lines 277--278
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
 
  []
 
 
-Overfull \hbox (4.6653pt too wide) in paragraph at lines 295--296
+Overfull \hbox (4.6653pt too wide) in paragraph at lines 296--297
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [6]
-Overfull \hbox (10.66536pt too wide) in paragraph at lines 316--317
+Overfull \hbox (10.66536pt too wide) in paragraph at lines 317--318
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (22.66548pt too wide) in paragraph at lines 317--318
+Overfull \hbox (22.66548pt too wide) in paragraph at lines 318--319
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 3
-32.
+33.
 (/usr/share/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 332.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 333.
 
-Overfull \hbox (0.78082pt too wide) in paragraph at lines 337--338
+Overfull \hbox (0.78082pt too wide) in paragraph at lines 338--339
 []\OT1/cmr/m/n/10 Sometimes a com-bi-na-tion of at-tributes is bet-ter than the
  at-tributes
  []
 
 [7]
-Overfull \hbox (46.66573pt too wide) in paragraph at lines 395--396
+Overfull \hbox (46.66573pt too wide) in paragraph at lines 396--397
 [][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (10.66536pt too wide) in paragraph at lines 403--404
+Overfull \hbox (10.66536pt too wide) in paragraph at lines 404--405
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (4.6653pt too wide) in paragraph at lines 405--406
+Overfull \hbox (4.6653pt too wide) in paragraph at lines 406--407
 [][][][][][][][][][][][][] 
  []
 
 [8]
-Overfull \hbox (15.66563pt too wide) in paragraph at lines 416--417
+Overfull \hbox (15.66563pt too wide) in paragraph at lines 417--418
 [][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (9.66557pt too wide) in paragraph at lines 427--428
+Overfull \hbox (9.66557pt too wide) in paragraph at lines 428--429
 [][][][][][][][][][][][][][][] 
  []
 
 [9]
-Overfull \hbox (3.66551pt too wide) in paragraph at lines 480--481
+Overfull \hbox (3.66551pt too wide) in paragraph at lines 481--482
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.tex:502: LaT
+/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.tex:503: LaT
 eX Error: Lonely \item--perhaps a missing list environment.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.502         \item
+l.503         \item
                     Simplify the model
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) detected at line 502
-[][]
- []
-
-
-/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.tex:502: LaT
-eX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.502         \item S
-                     implify the model
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 502
+Underfull \hbox (badness 10000) detected at line 503
 [][]
  []
 
@@ -311,8 +293,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.503         \item C
-                     onstrain the model (regularize it)
+l.503         \item S
+                     implify the model
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -329,8 +311,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.504         \item G
-                     et more data
+l.504         \item C
+                     onstrain the model (regularize it)
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -339,97 +321,105 @@ Underfull \hbox (badness 10000) detected at line 504
 [][]
  []
 
+
+/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.tex:505: LaT
+eX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.505         \item G
+                     et more data
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 505
+[][]
+ []
+
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 523--524
+Underfull \hbox (badness 10000) in paragraph at lines 524--525
 
  []
 
 
-Overfull \hbox (75.66624pt too wide) in paragraph at lines 531--532
+Overfull \hbox (75.66624pt too wide) in paragraph at lines 532--533
 [][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (75.66624pt too wide) in paragraph at lines 550--551
+Overfull \hbox (75.66624pt too wide) in paragraph at lines 551--552
 [][][][][][][][][][][][][][][][][] 
  []
 
 [11]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 5
-84.
+85.
 (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 584.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 585.
 
-Overfull \hbox (3.66551pt too wide) in paragraph at lines 590--591
+Overfull \hbox (3.66551pt too wide) in paragraph at lines 591--592
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (57.66606pt too wide) in paragraph at lines 604--605
+Overfull \hbox (57.66606pt too wide) in paragraph at lines 605--606
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][] 
  []
 
 
-Overfull \hbox (81.6663pt too wide) in paragraph at lines 617--618
+Overfull \hbox (81.6663pt too wide) in paragraph at lines 618--619
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (9.66557pt too wide) in paragraph at lines 623--624
+Overfull \hbox (9.66557pt too wide) in paragraph at lines 624--625
 [][][][][][][] 
  []
 
 [12]
-Overfull \hbox (63.66612pt too wide) in paragraph at lines 637--639
+Overfull \hbox (63.66612pt too wide) in paragraph at lines 638--640
 [][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (207.66759pt too wide) in paragraph at lines 640--641
+Overfull \hbox (207.66759pt too wide) in paragraph at lines 641--642
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (153.66704pt too wide) in paragraph at lines 641--642
+Overfull \hbox (153.66704pt too wide) in paragraph at lines 642--643
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (21.6657pt too wide) in paragraph at lines 645--647
+Overfull \hbox (21.6657pt too wide) in paragraph at lines 646--648
 [][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (21.6657pt too wide) in paragraph at lines 668--669
+Overfull \hbox (21.6657pt too wide) in paragraph at lines 669--670
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (9.66557pt too wide) in paragraph at lines 672--674
+Overfull \hbox (9.66557pt too wide) in paragraph at lines 673--675
 [][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (15.66563pt too wide) in paragraph at lines 674--675
+Overfull \hbox (15.66563pt too wide) in paragraph at lines 675--676
 [][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (39.66588pt too wide) in paragraph at lines 683--684
-[][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (21.6657pt too wide) in paragraph at lines 685--686
-[][][][][][][][][][][] 
- []
-
-[13] [14] (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.a
-ux) ) 
+[13] [14] [15] (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compend
+ium.aux) ) 
 Here is how much of TeX's memory you used:
  3809 strings out of 480478
  52258 string characters out of 5905958
@@ -438,22 +428,22 @@ Here is how much of TeX's memory you used:
  538476 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  30i,9n,41p,268b,1687s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/sha
-re/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
-usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000
-.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/shar
-e/texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/share/texmf-dist/fonts
-/type1/public/txfonts/t1xtt.pfb>
-Output written on Compendium.pdf (14 pages, 189478 bytes).
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</us
+r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
+fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
+m1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr
+/share/texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/share/texmf-dist/
+fonts/type1/public/txfonts/t1xtt.pfb>
+Output written on Compendium.pdf (15 pages, 189988 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 106 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -130,9 +130,9 @@ files:
       intermediatePostScript: false
     type: ParsedYAML
   Compendium.tex:
-    timeStamp: 2020-12-04T21:23:54.013Z
+    timeStamp: 2020-12-04T22:04:16.201Z
     jobNames: []
-    hash: QfWp1gdrar9Le/c9k2YbpzUidn6T0jB60HXwfVJVKYQ=
+    hash: lGDgfoJHI1S2WBUaKRwBB2zCLnef+r2vKMlkC50j1mY=
     type: LaTeX
     subType: article
   /home/alexandre/.config/dicy/config.yaml:
@@ -143,9 +143,9 @@ files:
     jobNames: []
     type: Nil
   Compendium.log:
-    timeStamp: 2020-12-04T21:23:54.716Z
+    timeStamp: 2020-12-04T22:04:16.891Z
     jobNames: []
-    hash: WLgBHHjJcqwVSC0tax1VIP/r6vf3yUOxNtyt1zXtXEg=
+    hash: iXnyKaRxN2MZ5xFamVFmPjktSK1prWWrlFICeLwqA7U=
     type: LaTeXLog
     subType: pdfTeX
   Compendium.fls-ParsedFileListing:
@@ -218,7 +218,7 @@ files:
       calls: []
     type: ParsedFileListing
   Compendium.log-ParsedLaTeXLog:
-    timeStamp: 2020-12-04T19:39:07.597Z
+    timeStamp: 2020-12-04T22:04:16.926Z
     jobNames: []
     value:
       messages:
@@ -467,8 +467,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 75
-              end: 75
+              start: 76
+              end: 76
           log:
             file: Compendium.log
             range:
@@ -481,8 +481,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 75
-              end: 75
+              start: 76
+              end: 76
           log:
             file: Compendium.log
             range:
@@ -495,8 +495,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 332
-              end: 332
+              start: 333
+              end: 333
           log:
             file: Compendium.log
             range:
@@ -511,8 +511,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 332
-              end: 332
+              start: 333
+              end: 333
           log:
             file: Compendium.log
             range:
@@ -529,8 +529,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 502
-              end: 502
+              start: 503
+              end: 503
           category: LaTeX
         - severity: error
           name: pdfTeX
@@ -543,8 +543,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 502
-              end: 502
+              start: 503
+              end: 503
           category: LaTeX
         - severity: error
           name: pdfTeX
@@ -557,8 +557,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 503
-              end: 503
+              start: 504
+              end: 504
           category: LaTeX
         - severity: error
           name: pdfTeX
@@ -571,8 +571,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 504
-              end: 504
+              start: 505
+              end: 505
           category: LaTeX
         - severity: info
           name: pdfTeX
@@ -581,8 +581,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 584
-              end: 584
+              start: 585
+              end: 585
           log:
             file: Compendium.log
             range:
@@ -597,8 +597,8 @@ files:
           source:
             file: Compendium.tex
             range:
-              start: 584
-              end: 584
+              start: 585
+              end: 585
           log:
             file: Compendium.log
             range:
@@ -610,21 +610,22 @@ files:
       calls: []
     type: ParsedLaTeXLog
   Compendium.aux:
-    timeStamp: 2020-12-04T21:23:54.690Z
+    timeStamp: 2020-12-04T22:04:16.868Z
     jobNames: []
-    hash: WxNKfwcmw/7xFJNaC27S9n9fYnIymUfWeg6DJ8Ch/GM=
+    hash: Np6cagYk0YEmUwHeDJdgwH6UzNATIqWSY+hik0X8rA8=
     type: LaTeXAuxilary
   Compendium.fls:
-    timeStamp: 2020-12-04T21:23:54.710Z
+    timeStamp: 2020-12-04T22:04:16.888Z
     jobNames: []
     hash: Z3iD8ZsaUl/QQVAX9QV6tR0GKUwqFj/dDSDqplr32rY=
     type: FileListing
   Compendium.aux-ParsedLaTeXAuxilary:
-    timeStamp: 2020-12-04T20:56:18.467Z
+    timeStamp: 2020-12-04T22:04:16.921Z
     jobNames: []
     value:
       commands:
         - relax
+        - '@writefile'
         - '@writefile'
         - '@writefile'
         - '@writefile'
@@ -849,14 +850,14 @@ files:
     timeStamp: 2020-06-07T15:57:48.000Z
     jobNames: []
   Compendium.pdf:
-    timeStamp: 2020-12-04T21:23:54.716Z
+    timeStamp: 2020-12-04T22:04:16.891Z
     jobNames: []
-    hash: pPmNxUrk+tGJ5mPRY3VoIGRXdCbsxl8xoo0MEFZ7aJY=
+    hash: Gf+cxRSWMbnWKDPmQiERuc5BHspeBs1QnkTbpOPgeNY=
     type: PortableDocumentFormat
   Compendium.synctex.gz:
-    timeStamp: 2020-12-04T21:23:54.716Z
+    timeStamp: 2020-12-04T22:04:16.891Z
     jobNames: []
-    hash: pViyUhxS9cefRKLv7Wnxws+waEuf4TQAVnSXtXem9zA=
+    hash: +nI7mHcSguPM30xYJD6hPuvi+JOxcSubzSe7SkpOsFc=
     type: SyncTeX
   /usr/share/texmf-dist/tex/latex/base/omscmr.fd:
     timeStamp: 2020-06-07T15:57:48.000Z

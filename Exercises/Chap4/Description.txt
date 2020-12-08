@@ -1,0 +1,10 @@
+# Training models:
+# Use two methods to train models for linear regression:
+#       - Exact solution that minimizes the cost function on the training set
+#       - Gradient descent: iterative steps to approach a solution (and will look at alternatives to GD. Batch-GD, mini-batch GD and stochastic GD)
+# Next: polynomial regression: more complex model which can overfit:
+#       - use learning curves ot see if overfitting
+#       - look at regularization techniques that reduces the risk of overfitting
+# 2 more models used for classifications:
+#       - Logistic regression
+#       - Softmax Regression

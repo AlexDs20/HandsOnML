@@ -63,6 +63,7 @@ showstringspaces=false            %
 \newpage
 
 %----------------------------------------
+\newpage
 \section{The machine learning landscape}
 %----------------------------------------
 ML is nothing more than fitting a model to the known data!
@@ -680,9 +681,10 @@ Preferably in a way that it is general and can be re-used later on.
             from scipy import stats
             confidence = 0.95
             squared_errors = (final_predictions - y_test) ** 2
-            np.sqrt(stats.t.interval(confidence, len(squared_errors) - 1,
-                                     loc=squared_errors.mean(),
-                                     scale=stats.sem(squared_errors)))
+            np.sqrt(stats.t.interval(confidence,
+                            len(squared_errors) - 1,
+                            loc=squared_errors.mean(),
+                            scale=stats.sem(squared_errors)))
         \end{python}
         If the results are worse than on the validation set, DO NOT FINETUNE THE HYPERPARAMETERS TO GET BETTER RESULTS!!
 
@@ -709,5 +711,9 @@ Preferably in a way that it is general and can be re-used later on.
 
     Also keep backups of every version of the datasets (in case the newly added data have a lot of outliers).
 
+%----------------------------------------
+\newpage
+\section{Classification}
+%----------------------------------------
 
 \end{document}
