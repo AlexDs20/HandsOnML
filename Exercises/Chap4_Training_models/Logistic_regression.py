@@ -52,7 +52,7 @@ if False:
     iris = datasets.load_iris()
     list(iris.keys())
     print(iris["DESCR"])
-    X = iris["data"][:,3:]      # Petal width
+    X = iris["data"][:, 3:]      # Petal width
     y = (iris["target"] == 2).astype(np.int)    # 1 if Iris virginica, else 0
 
     from sklearn.linear_model import LogisticRegression
@@ -66,8 +66,8 @@ if False:
     # y_proba = model.predict(X_new)
     plt.plot(X_new, y_proba[:, 1], "g-", label="Iris virginica")
     plt.plot(X_new, y_proba[:, 0], "b-", label="Not Iris virginica")
-    plt.plot(X[(y==0)], y[(y==0)], "b^")
-    plt.plot(X[(y==1)], y[(y==1)], "g^")
+    plt.plot(X[(y == 0)], y[(y == 0)], "b^")
+    plt.plot(X[(y == 1)], y[(y == 1)], "g^")
     plt.xlabel('Petal Width')
     plt.ylabel('Probability')
     plt.legend()
@@ -79,7 +79,7 @@ if True:
     from sklearn import datasets
     import numpy as np
     iris = datasets.load_iris()
-    X = iris["data"][:,2:]
+    X = iris["data"][:, 2:]
     y = (iris["target"] == 2).astype(np.int)    # 1 if Iris virginica, else 0
 
     from sklearn.linear_model import LogisticRegression
