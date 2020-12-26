@@ -71,7 +71,7 @@ options:
   intermediatePostScript: false
 files:
   dicy-instance.yaml-ParsedYAML:
-    timeStamp: 2020-12-04T13:19:01.637Z
+    timeStamp: 2020-12-26T18:07:30.201Z
     jobNames: []
     value:
       severity: info
@@ -130,26 +130,26 @@ files:
       intermediatePostScript: false
     type: ParsedYAML
   Compendium.tex:
-    timeStamp: 2020-12-04T22:04:16.201Z
+    timeStamp: 2020-12-26T18:37:30.036Z
     jobNames: []
-    hash: lGDgfoJHI1S2WBUaKRwBB2zCLnef+r2vKMlkC50j1mY=
+    hash: +HbKigXifeKxE4utExgq2BUyjIjsYfYnqt1uCkq54iA=
     type: LaTeX
     subType: article
   /home/alexandre/.config/dicy/config.yaml:
-    timeStamp: 2020-12-04T13:19:01.647Z
+    timeStamp: 2020-12-26T18:07:30.211Z
     jobNames: []
     type: YAML
   x.y-Nil:
     jobNames: []
     type: Nil
   Compendium.log:
-    timeStamp: 2020-12-04T22:04:16.891Z
+    timeStamp: 2020-12-26T18:37:30.736Z
     jobNames: []
-    hash: iXnyKaRxN2MZ5xFamVFmPjktSK1prWWrlFICeLwqA7U=
+    hash: IzRwh/6vamweR8WSHvsF0We8AAGwwbh0bBor1tRi19g=
     type: LaTeXLog
     subType: pdfTeX
   Compendium.fls-ParsedFileListing:
-    timeStamp: 2020-12-04T19:39:07.561Z
+    timeStamp: 2020-12-26T17:58:18.453Z
     jobNames: []
     value:
       messages: []
@@ -176,10 +176,13 @@ files:
         - /usr/share/texmf-dist/fonts/tfm/public/txfonts/t1xtt.tfm
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
@@ -209,16 +212,34 @@ files:
         - /usr/share/texmf-dist/web2c/texmf.cnf
         - /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
         - /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+        - Chapters/Classification.aux
+        - Chapters/Classification.tex
+        - Chapters/Decision_Trees.aux
+        - Chapters/Decision_Trees.tex
+        - Chapters/Machine_learning_landscape.aux
+        - Chapters/Machine_learning_landscape.tex
+        - Chapters/Support_vector_machines.aux
+        - Chapters/Support_vector_machines.tex
+        - Chapters/Training_models.aux
+        - Chapters/Training_models.tex
+        - Chapters/end-to-end_machine_learning_project.aux
+        - Chapters/end-to-end_machine_learning_project.tex
         - Compendium.aux
         - Compendium.tex
       outputs:
+        - Chapters/Classification.aux
+        - Chapters/Decision_Trees.aux
+        - Chapters/Machine_learning_landscape.aux
+        - Chapters/Support_vector_machines.aux
+        - Chapters/Training_models.aux
+        - Chapters/end-to-end_machine_learning_project.aux
         - Compendium.aux
         - Compendium.log
         - Compendium.pdf
       calls: []
     type: ParsedFileListing
   Compendium.log-ParsedLaTeXLog:
-    timeStamp: 2020-12-04T22:04:16.926Z
+    timeStamp: 2020-12-26T18:24:57.017Z
     jobNames: []
     value:
       messages:
@@ -332,8 +353,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 98
-              end: 99
+              start: 110
+              end: 111
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -346,8 +367,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 100
-              end: 101
+              start: 112
+              end: 113
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -360,8 +381,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 102
-              end: 103
+              start: 114
+              end: 115
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -374,8 +395,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 104
-              end: 105
+              start: 116
+              end: 117
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -388,8 +409,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 106
-              end: 107
+              start: 118
+              end: 119
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -402,8 +423,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 108
-              end: 109
+              start: 120
+              end: 121
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -416,8 +437,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 110
-              end: 111
+              start: 122
+              end: 123
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -430,8 +451,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 161
-              end: 162
+              start: 173
+              end: 174
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -444,8 +465,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 163
-              end: 164
+              start: 175
+              end: 176
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -458,50 +479,50 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 165
-              end: 166
+              start: 177
+              end: 178
         - severity: info
           name: pdfTeX
           category: LaTeX Font
           text: External font `cmex10' loaded for size <7>.
           source:
-            file: Compendium.tex
+            file: Chapters/Machine_learning_landscape.tex
             range:
-              start: 76
-              end: 76
+              start: 10
+              end: 10
           log:
             file: Compendium.log
             range:
-              start: 170
-              end: 171
+              start: 184
+              end: 185
         - severity: info
           name: pdfTeX
           category: LaTeX Font
           text: External font `cmex10' loaded for size <5>.
           source:
-            file: Compendium.tex
+            file: Chapters/Machine_learning_landscape.tex
             range:
-              start: 76
-              end: 76
+              start: 10
+              end: 10
           log:
             file: Compendium.log
             range:
-              start: 172
-              end: 173
+              start: 186
+              end: 187
         - severity: info
           name: pdfTeX
           category: LaTeX Font
           text: Trying to load font information for OML+cmr
           source:
-            file: Compendium.tex
+            file: Chapters/end-to-end_machine_learning_project.tex
             range:
-              start: 333
-              end: 333
+              start: 137
+              end: 137
           log:
             file: Compendium.log
             range:
-              start: 227
-              end: 228
+              start: 249
+              end: 250
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -509,85 +530,29 @@ files:
             Font shape `OML/cmr/m/it' in size <10> not available Font shape
             `OML/cmm/m/it' tried instead.
           source:
-            file: Compendium.tex
+            file: Chapters/end-to-end_machine_learning_project.tex
             range:
-              start: 333
-              end: 333
+              start: 137
+              end: 137
           log:
             file: Compendium.log
             range:
-              start: 232
-              end: 233
-        - severity: error
-          name: pdfTeX
-          text: Lonely \item--perhaps a missing list environment
-          log:
-            file: Compendium.log
-            range:
-              start: 271
-              end: 272
-          source:
-            file: Compendium.tex
-            range:
-              start: 503
-              end: 503
-          category: LaTeX
-        - severity: error
-          name: pdfTeX
-          text: Lonely \item--perhaps a missing list environment
-          log:
-            file: Compendium.log
-            range:
-              start: 289
-              end: 290
-          source:
-            file: Compendium.tex
-            range:
-              start: 503
-              end: 503
-          category: LaTeX
-        - severity: error
-          name: pdfTeX
-          text: Lonely \item--perhaps a missing list environment
-          log:
-            file: Compendium.log
-            range:
-              start: 307
-              end: 308
-          source:
-            file: Compendium.tex
-            range:
-              start: 504
-              end: 504
-          category: LaTeX
-        - severity: error
-          name: pdfTeX
-          text: Lonely \item--perhaps a missing list environment
-          log:
-            file: Compendium.log
-            range:
-              start: 325
-              end: 326
-          source:
-            file: Compendium.tex
-            range:
-              start: 505
-              end: 505
-          category: LaTeX
+              start: 254
+              end: 255
         - severity: info
           name: pdfTeX
           category: LaTeX Font
           text: Trying to load font information for OMS+cmr
           source:
-            file: Compendium.tex
+            file: Chapters/end-to-end_machine_learning_project.tex
             range:
-              start: 585
-              end: 585
+              start: 389
+              end: 389
           log:
             file: Compendium.log
             range:
-              start: 358
-              end: 359
+              start: 308
+              end: 309
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -595,56 +560,42 @@ files:
             Font shape `OMS/cmr/m/n' in size <10> not available Font shape
             `OMS/cmsy/m/n' tried instead.
           source:
-            file: Compendium.tex
+            file: Chapters/end-to-end_machine_learning_project.tex
             range:
-              start: 585
-              end: 585
+              start: 389
+              end: 389
           log:
             file: Compendium.log
             range:
-              start: 363
-              end: 364
+              start: 313
+              end: 314
       inputs: []
       outputs:
         - Compendium.pdf
       calls: []
     type: ParsedLaTeXLog
   Compendium.aux:
-    timeStamp: 2020-12-04T22:04:16.868Z
+    timeStamp: 2020-12-26T18:37:30.709Z
     jobNames: []
-    hash: Np6cagYk0YEmUwHeDJdgwH6UzNATIqWSY+hik0X8rA8=
+    hash: eiF5jHEEty5Eh5a9C5uKNmKfg9UOkjY7Q39OubLyqnE=
     type: LaTeXAuxilary
   Compendium.fls:
-    timeStamp: 2020-12-04T22:04:16.888Z
+    timeStamp: 2020-12-26T18:37:30.732Z
     jobNames: []
-    hash: Z3iD8ZsaUl/QQVAX9QV6tR0GKUwqFj/dDSDqplr32rY=
+    hash: 1zeNJ6wgUlayWSgJAwrc+IpSDAiv4j21XmGdPsvt6qs=
     type: FileListing
   Compendium.aux-ParsedLaTeXAuxilary:
-    timeStamp: 2020-12-04T22:04:16.921Z
+    timeStamp: 2020-12-26T13:49:07.853Z
     jobNames: []
     value:
       commands:
         - relax
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
-        - '@writefile'
+        - '@input'
+        - '@input'
+        - '@input'
+        - '@input'
+        - '@input'
+        - '@input'
     type: ParsedLaTeXAuxilary
   /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb:
     timeStamp: 2020-06-07T15:57:48.000Z
@@ -850,19 +801,267 @@ files:
     timeStamp: 2020-06-07T15:57:48.000Z
     jobNames: []
   Compendium.pdf:
-    timeStamp: 2020-12-04T22:04:16.891Z
+    timeStamp: 2020-12-26T18:37:30.732Z
     jobNames: []
-    hash: Gf+cxRSWMbnWKDPmQiERuc5BHspeBs1QnkTbpOPgeNY=
+    hash: lv/wbiSza53jnZ+ytIgCkHhF1JMxyV0oQeazVOkRseo=
     type: PortableDocumentFormat
-  Compendium.synctex.gz:
-    timeStamp: 2020-12-04T22:04:16.891Z
-    jobNames: []
-    hash: +nI7mHcSguPM30xYJD6hPuvi+JOxcSubzSe7SkpOsFc=
-    type: SyncTeX
   /usr/share/texmf-dist/tex/latex/base/omscmr.fd:
     timeStamp: 2020-06-07T15:57:48.000Z
     jobNames: []
     type: FontDescription
+  Chapters/Machine_learning_landscape.aux:
+    timeStamp: 2020-12-26T18:37:30.449Z
+    jobNames: []
+    hash: HrRAHmkymBM29YrmQ5SW7CW4xCpVGcg6C04IrGQ3I1g=
+    type: LaTeXAuxilary
+  Chapters/Machine_learning_landscape.tex:
+    timeStamp: 2020-12-26T12:39:47.449Z
+    jobNames: []
+    hash: Da9/I2shhcb6xQHla9jYs9oVSlXJdZfvQUJE+fPDPxM=
+    type: TeX
+  Chapters/Machine_learning_landscape.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2020-12-26T12:39:51.275Z
+    jobNames: []
+    value:
+      commands:
+        - relax
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@setckpt'
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+    type: ParsedLaTeXAuxilary
+  Chapters/end-to-end_machine_learning_project.aux:
+    timeStamp: 2020-12-26T18:37:30.686Z
+    jobNames: []
+    hash: WN8ehIwi+vHk1gyprNhWv8I1cYsgNRJSSQE9fE1lwAg=
+    type: LaTeXAuxilary
+  Chapters/end-to-end_machine_learning_project.tex:
+    timeStamp: 2020-12-26T12:42:26.309Z
+    jobNames: []
+    hash: Qm6/7jgSsq+/tsy/E4MxElJI/5vdaRcftwv6qcCVfn0=
+    type: TeX
+  Chapters/end-to-end_machine_learning_project.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2020-12-26T12:41:36.239Z
+    jobNames: []
+    value:
+      commands:
+        - relax
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@setckpt'
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+    type: ParsedLaTeXAuxilary
+  Chapters/Classification.aux:
+    timeStamp: 2020-12-26T18:37:30.689Z
+    jobNames: []
+    hash: VepifnjJcGDEFrmeNuDwo0OgDpDBpb7jaU8YIEX2Wp4=
+    type: LaTeXAuxilary
+  Chapters/Classification.tex:
+    timeStamp: 2020-12-26T12:42:27.779Z
+    jobNames: []
+    hash: ZIhnGW563glKYXzlQZyz/qBfi4nzxoLLYaa6TaKSvUo=
+    type: TeX
+  Chapters/Classification.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2020-12-26T12:49:51.064Z
+    jobNames: []
+    value:
+      commands:
+        - relax
+        - '@writefile'
+        - '@setckpt'
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+    type: ParsedLaTeXAuxilary
+  Chapters/Decision_Trees.aux:
+    timeStamp: 2020-12-26T18:37:30.709Z
+    jobNames: []
+    hash: yI/Stt0YOJKNz2K+kS1V61yFQSGy1OlquXj2klODmrk=
+    type: LaTeXAuxilary
+  Chapters/Decision_Trees.tex:
+    timeStamp: 2020-12-26T18:37:26.312Z
+    jobNames: []
+    hash: k7qNUIMGRQmlHDYMIN9sunqLV1yN17ZhP/qPgfB/UUE=
+    type: TeX
+  Chapters/Training_models.aux:
+    timeStamp: 2020-12-26T18:37:30.689Z
+    jobNames: []
+    hash: 3L2flMau/KqSK3UutFTpIbZ6cbswqwejLsBitDX7+C0=
+    type: LaTeXAuxilary
+  Chapters/Training_models.tex:
+    timeStamp: 2020-12-26T13:45:29.885Z
+    jobNames: []
+    hash: gsT93kuIpzbU6pYtT4Zc5y/K1T+ChYdsM0h8gZnDtxs=
+    type: TeX
+  Chapters/Decision_Trees.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2020-12-26T17:58:18.490Z
+    jobNames: []
+    value:
+      commands:
+        - relax
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@setckpt'
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+    type: ParsedLaTeXAuxilary
+  Chapters/Training_models.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2020-12-26T13:45:36.396Z
+    jobNames: []
+    value:
+      commands:
+        - relax
+        - '@writefile'
+        - '@setckpt'
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+    type: ParsedLaTeXAuxilary
+  Chapters/Support_vector_machines.aux:
+    timeStamp: 2020-12-26T18:37:30.689Z
+    jobNames: []
+    hash: 8GJL+TlgICeHnT427vj5SEGwpDnnonJx7aZGLGmPLfo=
+    type: LaTeXAuxilary
+  Chapters/Support_vector_machines.tex:
+    timeStamp: 2020-12-26T13:47:54.178Z
+    jobNames: []
+    hash: E+iDEZ2NgREiPK4SNlVELyhXW8ThTEnvSQ5pK11O1ms=
+    type: TeX
+  Chapters/Support_vector_machines.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2020-12-26T13:49:07.892Z
+    jobNames: []
+    value:
+      commands:
+        - relax
+        - '@writefile'
+        - '@setckpt'
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+    type: ParsedLaTeXAuxilary
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  Compendium.synctex.gz:
+    timeStamp: 2020-12-26T18:37:30.736Z
+    jobNames: []
+    hash: ow3+lqfDnlBP9R2qT3vOVmMd2hOTeYkm8exNsXA1tu0=
+    type: SyncTeX
 rules:
   - name: ApplyOptions
     command: load
@@ -1083,6 +1282,34 @@ rules:
         type: default
       - file: /usr/share/texmf-dist/tex/latex/base/omscmr.fd
         type: default
+      - file: Chapters/Machine_learning_landscape.aux
+        type: default
+      - file: Chapters/Machine_learning_landscape.tex
+        type: default
+      - file: Chapters/end-to-end_machine_learning_project.aux
+        type: default
+      - file: Chapters/end-to-end_machine_learning_project.tex
+        type: default
+      - file: Chapters/Classification.aux
+        type: default
+      - file: Chapters/Classification.tex
+        type: default
+      - file: Chapters/Decision_Trees.aux
+        type: default
+      - file: Chapters/Decision_Trees.tex
+        type: default
+      - file: Chapters/Training_models.aux
+        type: default
+      - file: Chapters/Training_models.tex
+        type: default
+      - file: Chapters/Support_vector_machines.aux
+        type: default
+      - file: Chapters/Support_vector_machines.tex
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+        type: default
     outputs:
       - file: Compendium.aux
         type: default
@@ -1092,6 +1319,18 @@ rules:
         type: default
       - file: Compendium.pdf
         type: target
+      - file: Chapters/Machine_learning_landscape.aux
+        type: default
+      - file: Chapters/end-to-end_machine_learning_project.aux
+        type: default
+      - file: Chapters/Classification.aux
+        type: default
+      - file: Chapters/Decision_Trees.aux
+        type: default
+      - file: Chapters/Training_models.aux
+        type: default
+      - file: Chapters/Support_vector_machines.aux
+        type: default
       - file: Compendium.synctex.gz
         type: target
   - name: ParseLaTeXLog
@@ -1174,3 +1413,69 @@ rules:
     parameters: []
     inputs: []
     outputs: []
+  - name: ParseLaTeXAuxilary
+    command: build
+    phase: execute
+    parameters:
+      - Chapters/Machine_learning_landscape.aux
+    inputs:
+      - file: Chapters/Machine_learning_landscape.aux
+        type: default
+    outputs:
+      - file: Chapters/Machine_learning_landscape.aux-ParsedLaTeXAuxilary
+        type: default
+  - name: ParseLaTeXAuxilary
+    command: build
+    phase: execute
+    parameters:
+      - Chapters/end-to-end_machine_learning_project.aux
+    inputs:
+      - file: Chapters/end-to-end_machine_learning_project.aux
+        type: default
+    outputs:
+      - file: Chapters/end-to-end_machine_learning_project.aux-ParsedLaTeXAuxilary
+        type: default
+  - name: ParseLaTeXAuxilary
+    command: build
+    phase: execute
+    parameters:
+      - Chapters/Classification.aux
+    inputs:
+      - file: Chapters/Classification.aux
+        type: default
+    outputs:
+      - file: Chapters/Classification.aux-ParsedLaTeXAuxilary
+        type: default
+  - name: ParseLaTeXAuxilary
+    command: build
+    phase: execute
+    parameters:
+      - Chapters/Decision_Trees.aux
+    inputs:
+      - file: Chapters/Decision_Trees.aux
+        type: default
+    outputs:
+      - file: Chapters/Decision_Trees.aux-ParsedLaTeXAuxilary
+        type: default
+  - name: ParseLaTeXAuxilary
+    command: build
+    phase: execute
+    parameters:
+      - Chapters/Training_models.aux
+    inputs:
+      - file: Chapters/Training_models.aux
+        type: default
+    outputs:
+      - file: Chapters/Training_models.aux-ParsedLaTeXAuxilary
+        type: default
+  - name: ParseLaTeXAuxilary
+    command: build
+    phase: execute
+    parameters:
+      - Chapters/Support_vector_machines.aux
+    inputs:
+      - file: Chapters/Support_vector_machines.aux
+        type: default
+    outputs:
+      - file: Chapters/Support_vector_machines.aux-ParsedLaTeXAuxilary
+        type: default

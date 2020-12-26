@@ -1,0 +1,135 @@
+\newpage
+\section{Decision Trees}
+
+    Can perform classification, regression and multiple output tasks.\\
+
+    They are the fundamentals of Random Forests (among the most powerful algo.).\\
+
+    Decision Trees require little data preparation.
+    It does not require feature scaling or centering.\\
+
+\subsection{Training and visualizing}
+
+\begin{python}
+    data = load_data()
+    X = data.data
+    y = data.target
+    model = DecisionTreeClassifier(max_depth=2)
+    model.fit(X, y)
+\end{python}
+
+The tree can be be exported (and then visualized after conversion) using
+\begin{python}
+    export_graphviz(
+        model,
+        out_file="output_file.dot"
+        feature_names=data.feature_names,
+        class_names=data.target_names,
+        rounded=True,
+        filled=True
+    )
+\end{python}
+and can be converted in a shell using:
+\begin{python}
+    dot -Tpng file_name.dot -o file_name.png
+\end{python}
+
+\subsubsection*{Reading tree}
+In the output:\\
+\begin{itemize}
+    \item first line = Condition to be satisfied
+    \item gini = measures the impurity of the node (pure if gini=0)
+            It is pure if all the training instances satisfying the condition belong to the same class.
+    \item samples = how many samples are subject to the condition check (first line)
+    \item value = [.., .., .., ..] = How many training instances of this node applied to
+    \item class = Predicted class
+\end{itemize}
+
+\subsection{Making predictions}
+
+The gini score for the $i^\mathrm{th}$ node:
+\begin{equation}
+    G_i = 1 - \sum_{k=1}^{n}p_{i,k}^2
+\end{equation}
+with $p_{i,k}$ the ratio of class k instances among the training instances in the $i^\mathrm{th}$ node.\\
+
+It can estimate class and probability.\\
+However, the probability is determine by the region (hyper-rectangle) in which it belongs to in the feature space depending on the amount of class of each instances in the hyper-rectangle.
+
+\subsection{Making predictions}
+
+Scikit-learn uses the Classification and Regression (CART) algorithm to train decision trees and it only allow to split each node into two categories.\\
+
+There exists other algorithms (ID3) which allow to split into more children categories.\\
+
+\subsubsection*{The CART algorithm}
+Split the training set into sub-set by setting threshold $t_k$ on the feature $k$.\\
+Which pair $\left(k, t_k\right)$? $\rightarrow$ produces the purest subsets.
+
+Cost function:
+\begin{equation}
+    J\left(k, tk\right) = \frac{m_\mathrm{left}}{m} G_\mathrm{left} + \frac{m_\mathrm{right}}{m} G_\mathrm{right}
+\end{equation}
+with $G_{l/r}$ measures the impurity of the left/right subset and $m_{l/r}$ the number of instances in the left/right subset.
+
+This method gets itterated at each nodes until reaching the desired depth or if it cannot reduce the impurity.
+
+\subsubsection*{Gini impurity or Entropy}
+sklearn $\rightarrow$ Gini impurity (default) but entropy can also be chosen exist.\\
+
+\begin{itemize}
+\item thermo.:\\
+Entropy $\rightarrow$ measures disorder.
+
+\item Shannon's information theory:\\
+It measures the average information content of a message.\\
+0 = all messages are the same.
+
+\item Machine learning: $\rightarrow$ measures impurity.
+0 = if set contains instances of only one class.\\
+Definition: $H_i = -\sum_{k=1}^n p_{i,k} log_2(p_{i,k})$
+\end{itemize}
+
+Gini or entropy?\\
+Usually, no big difference.
+\begin{description}
+    \item [Gini] \hfill
+    \begin{itemize}
+        \item Faster to computer $\rightarrow$ good default\\
+        \item Tends to isolate the most frequent class in its own branch
+    \end{itemize}
+    \item [Entropy] \hfill
+    Produces more balanced trees.
+\end{description}
+
+\subsubsection*{Regularization hyperparameters}
+Decision tree does not assume anything about the data and just fit the training data.
+$\rightarrow$ Often overfitting.\\
+
+"non-parametric" model because the number of parameters is not set before training.
+To not overfit $\rightarrow$ limitation during training = "Regularization".
+\begin{itemize}
+    \item \verb;max_depth;
+    \item \verb;min_samples_split;: min number of sample a node must have before it can split
+    \item \verb;min_samples_leaf;: minimum number of samples a leaf must have
+    \item \verb;min_weight_fraction_leaf;: min fraction of instances (compared to total instances) a leaf must have
+    \item \verb;max_leaf_nodes;: max number of leaf nodes
+    \item \verb;max_features;
+\end{itemize}
+$\Rightarrow$ regularize the model
+
+\subsection{Regression}
+Trees can also be used for regressions.\\
+Following the fitted tree result in predicting values.\\
+Instead of minimizing the impurity (as in classification), it minimizes the "MSE".\\
+Again, this is prone to overfitting and regularization should be used (e.g.\ \verb;min_samples_leaf;).
+
+\subsection{Limitations}
+\begin{description}
+    \item [Perpendicular splits] \hfill
+    A training set rotated by $45^\circ$ in the feature space might very well, or badly be splitted using decision tree.\\
+    To limit this: $\Rightarrow$ use Principal Component Analysis.
+    \item [Sensitivity] \hfill
+    Sensitive to small changes in the training set.\\
+    Random Forests can limit this by averaging predictions from many trees. 
+\end{description}

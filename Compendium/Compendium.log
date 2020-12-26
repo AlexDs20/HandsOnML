@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.11.10)  4 DEC 2020 23:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.11.10)  26 DEC 2020 19:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -94,7 +94,19 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count186
 \l__pdf_internal_box=\box49
-) (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.aux)
+) (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.aux
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Machine_learn
+ing_landscape.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/end-to-end_ma
+chine_learning_project.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Classificatio
+n.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Training_mode
+ls.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Support_vecto
+r_machines.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Decision_Tree
+s.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
 LaTeX Font Info:    ... okay on input line 58.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
@@ -167,283 +179,294 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Machine_learn
+ing_landscape.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 76.
+(Font)              <7> on input line 10.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 76.
+(Font)              <5> on input line 10.
 
-Underfull \hbox (badness 1194) in paragraph at lines 92--93
+Underfull \hbox (badness 1194) in paragraph at lines 26--27
 []|\OT1/cmr/m/n/10 kNN, Lin-ear Reg., Lo-gis-tic Reg.,
  []
 
 
-Underfull \hbox (badness 4832) in paragraph at lines 93--94
+Underfull \hbox (badness 4832) in paragraph at lines 27--28
 []|\OT1/cmr/m/n/10 Clustering: k-means, DB-SCAN,
  []
 
 
-Underfull \hbox (badness 4543) in paragraph at lines 94--95
+Underfull \hbox (badness 4543) in paragraph at lines 28--29
 []|\OT1/cmr/m/n/10 Deepd be-lief net-work, re-stricted
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--95
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
 []|\OT1/cmr/m/n/10 Reinforcment
  []
 
 
-Underfull \hbox (badness 1540) in paragraph at lines 100--100
+Underfull \hbox (badness 1540) in paragraph at lines 34--34
 []|\OT1/cmr/m/n/10 On new data, check dis-tance to
  []
 
 
-Overfull \hbox (35.9939pt too wide) in paragraph at lines 89--103
+Overfull \hbox (35.9939pt too wide) in paragraph at lines 23--37
 [][] 
  []
 
-[2] [3] [4] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+[2
+
+] [3]) [4]
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/end-to-end_ma
+chine_learning_project.tex (/usr/share/texmf-dist/tex/latex/listings/lstlang1.s
+ty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [5]
-Underfull \hbox (badness 10000) in paragraph at lines 278--279
+) [5
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 
-Overfull \hbox (4.6653pt too wide) in paragraph at lines 296--297
+Overfull \hbox (4.6653pt too wide) in paragraph at lines 100--101
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [6]
-Overfull \hbox (10.66536pt too wide) in paragraph at lines 317--318
+Overfull \hbox (10.66536pt too wide) in paragraph at lines 121--122
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (22.66548pt too wide) in paragraph at lines 318--319
+Overfull \hbox (22.66548pt too wide) in paragraph at lines 122--123
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 3
-33.
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 1
+37.
 (/usr/share/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 333.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 137.
 
-Overfull \hbox (0.78082pt too wide) in paragraph at lines 338--339
+Overfull \hbox (0.78082pt too wide) in paragraph at lines 142--143
 []\OT1/cmr/m/n/10 Sometimes a com-bi-na-tion of at-tributes is bet-ter than the
  at-tributes
  []
 
 [7]
-Overfull \hbox (46.66573pt too wide) in paragraph at lines 396--397
+Overfull \hbox (46.66573pt too wide) in paragraph at lines 200--201
 [][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (10.66536pt too wide) in paragraph at lines 404--405
+Overfull \hbox (10.66536pt too wide) in paragraph at lines 208--209
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (4.6653pt too wide) in paragraph at lines 406--407
+Overfull \hbox (4.6653pt too wide) in paragraph at lines 210--211
 [][][][][][][][][][][][][] 
  []
 
 [8]
-Overfull \hbox (15.66563pt too wide) in paragraph at lines 417--418
+Overfull \hbox (15.66563pt too wide) in paragraph at lines 221--222
 [][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (9.66557pt too wide) in paragraph at lines 428--429
+Overfull \hbox (9.66557pt too wide) in paragraph at lines 232--233
 [][][][][][][][][][][][][][][] 
  []
 
 [9]
-Overfull \hbox (3.66551pt too wide) in paragraph at lines 481--482
+Overfull \hbox (3.66551pt too wide) in paragraph at lines 285--286
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.tex:503: LaT
-eX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.503         \item
-                    Simplify the model
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 503
-[][]
- []
-
-
-/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.tex:503: LaT
-eX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.503         \item S
-                     implify the model
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 503
-[][]
- []
-
-
-/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.tex:504: LaT
-eX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.504         \item C
-                     onstrain the model (regularize it)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 504
-[][]
- []
-
-
-/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.tex:505: LaT
-eX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.505         \item G
-                     et more data
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 505
-[][]
- []
-
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 524--525
+Underfull \hbox (badness 10000) in paragraph at lines 328--329
 
  []
 
 
-Overfull \hbox (75.66624pt too wide) in paragraph at lines 532--533
+Overfull \hbox (75.66624pt too wide) in paragraph at lines 336--337
 [][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (75.66624pt too wide) in paragraph at lines 551--552
+Overfull \hbox (75.66624pt too wide) in paragraph at lines 355--356
 [][][][][][][][][][][][][][][][][] 
  []
 
 [11]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 5
-85.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 3
+89.
 (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 585.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 389.
 
-Overfull \hbox (3.66551pt too wide) in paragraph at lines 591--592
+Overfull \hbox (3.66551pt too wide) in paragraph at lines 395--396
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (57.66606pt too wide) in paragraph at lines 605--606
+Overfull \hbox (57.66606pt too wide) in paragraph at lines 409--410
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][] 
  []
 
 
-Overfull \hbox (81.6663pt too wide) in paragraph at lines 618--619
+Overfull \hbox (81.6663pt too wide) in paragraph at lines 422--423
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (9.66557pt too wide) in paragraph at lines 624--625
+Overfull \hbox (9.66557pt too wide) in paragraph at lines 428--429
 [][][][][][][] 
  []
 
 [12]
-Overfull \hbox (63.66612pt too wide) in paragraph at lines 638--640
+Overfull \hbox (63.66612pt too wide) in paragraph at lines 442--444
 [][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (207.66759pt too wide) in paragraph at lines 641--642
+Overfull \hbox (207.66759pt too wide) in paragraph at lines 445--446
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (153.66704pt too wide) in paragraph at lines 642--643
+Overfull \hbox (153.66704pt too wide) in paragraph at lines 446--447
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (21.6657pt too wide) in paragraph at lines 646--648
+Overfull \hbox (21.6657pt too wide) in paragraph at lines 450--452
 [][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (21.6657pt too wide) in paragraph at lines 669--670
+Overfull \hbox (21.6657pt too wide) in paragraph at lines 473--474
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (9.66557pt too wide) in paragraph at lines 673--675
+Overfull \hbox (9.66557pt too wide) in paragraph at lines 477--479
 [][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (15.66563pt too wide) in paragraph at lines 675--676
+Overfull \hbox (15.66563pt too wide) in paragraph at lines 479--480
 [][][][][][][][][][][][][][] 
  []
 
-[13] [14] [15] (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compend
-ium.aux) ) 
+[13]) [14]
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Classificatio
+n.tex) [15
+
+
+]
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Training_mode
+ls.tex) [16
+
+
+]
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Support_vecto
+r_machines.tex) [17
+
+
+]
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Decision_Tree
+s.tex
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--55
+
+ []
+
+[18
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+) [19] (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.aux
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Machine_learn
+ing_landscape.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/end-to-end_ma
+chine_learning_project.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Classificatio
+n.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Training_mode
+ls.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Support_vecto
+r_machines.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Decision_Tree
+s.aux)) ) 
 Here is how much of TeX's memory you used:
- 3809 strings out of 480478
- 52258 string characters out of 5905958
- 497415 words of memory out of 5000000
- 19840 multiletter control sequences out of 15000+600000
+ 3908 strings out of 480478
+ 56930 string characters out of 5905958
+ 499256 words of memory out of 5000000
+ 19895 multiletter control sequences out of 15000+600000
  538476 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,9n,41p,268b,1687s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</us
-r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
-fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
-m1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr
-/share/texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/share/texmf-dist/
-fonts/type1/public/txfonts/t1xtt.pfb>
-Output written on Compendium.pdf (15 pages, 189988 bytes).
+ 32i,9n,45p,323b,1687s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr
+/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.p
+fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dis
+t/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/p
+ublic/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/txfonts/t
+1xbtt.pfb></usr/share/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb>
+Output written on Compendium.pdf (19 pages, 222549 bytes).
 PDF statistics:
- 106 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 131 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
