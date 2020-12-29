@@ -93,12 +93,12 @@ Definition: $H_i = -\sum_{k=1}^n p_{i,k} log_2(p_{i,k})$
 Gini or entropy?\\
 Usually, no big difference.
 \begin{description}
-    \item [Gini] \hfill
+    \item [Gini] \hfill\\
     \begin{itemize}
         \item Faster to computer $\rightarrow$ good default\\
         \item Tends to isolate the most frequent class in its own branch
     \end{itemize}
-    \item [Entropy] \hfill
+    \item [Entropy] \hfill\\
     Produces more balanced trees.
 \end{description}
 
@@ -126,10 +126,10 @@ Again, this is prone to overfitting and regularization should be used (e.g.\ \ve
 
 \subsection{Limitations}
 \begin{description}
-    \item [Perpendicular splits] \hfill
+    \item [Perpendicular splits] \hfill\\
     A training set rotated by $45^\circ$ in the feature space might very well, or badly be splitted using decision tree.\\
     To limit this: $\Rightarrow$ use Principal Component Analysis.
-    \item [Sensitivity] \hfill
+    \item [Sensitivity] \hfill\\
     Sensitive to small changes in the training set.\\
-    Random Forests can limit this by averaging predictions from many trees. 
+    Random Forests can limit this by averaging predictions from many trees.
 \end{description}

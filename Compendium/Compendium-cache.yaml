@@ -71,7 +71,7 @@ options:
   intermediatePostScript: false
 files:
   dicy-instance.yaml-ParsedYAML:
-    timeStamp: 2020-12-26T18:07:30.201Z
+    timeStamp: 2020-12-29T18:25:38.689Z
     jobNames: []
     value:
       severity: info
@@ -130,26 +130,26 @@ files:
       intermediatePostScript: false
     type: ParsedYAML
   Compendium.tex:
-    timeStamp: 2020-12-26T18:37:30.036Z
+    timeStamp: 2020-12-29T20:54:35.866Z
     jobNames: []
-    hash: +HbKigXifeKxE4utExgq2BUyjIjsYfYnqt1uCkq54iA=
+    hash: 10IWWo3/yyFFCyHo2hHmsgj4dD0sqmcSqnDwy/tQpj0=
     type: LaTeX
     subType: article
   /home/alexandre/.config/dicy/config.yaml:
-    timeStamp: 2020-12-26T18:07:30.211Z
+    timeStamp: 2020-12-29T18:25:38.699Z
     jobNames: []
     type: YAML
   x.y-Nil:
     jobNames: []
     type: Nil
   Compendium.log:
-    timeStamp: 2020-12-26T18:37:30.736Z
+    timeStamp: 2020-12-29T20:54:36.970Z
     jobNames: []
-    hash: IzRwh/6vamweR8WSHvsF0We8AAGwwbh0bBor1tRi19g=
+    hash: wUCT4sHmxubl1a7p7a0QK4a6wq1FgLi9XKkIYzeV1UQ=
     type: LaTeXLog
     subType: pdfTeX
   Compendium.fls-ParsedFileListing:
-    timeStamp: 2020-12-26T17:58:18.453Z
+    timeStamp: 2020-12-29T20:30:10.845Z
     jobNames: []
     value:
       messages: []
@@ -157,9 +157,12 @@ files:
         - /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
         - /usr/share/texmf-dist/fonts/map/fontname/texfonts.map
         - /usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
+        - /usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
         - /usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcti1000.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+        - /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
+        - /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
@@ -171,22 +174,35 @@ files:
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+        - /usr/share/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+        - /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/txfonts/t1xbtt.tfm
         - /usr/share/texmf-dist/fonts/tfm/public/txfonts/t1xtt.tfm
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
         - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb
         - /usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
+        - /usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb
         - /usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb
         - /usr/share/texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb
         - /usr/share/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb
@@ -216,6 +232,8 @@ files:
         - Chapters/Classification.tex
         - Chapters/Decision_Trees.aux
         - Chapters/Decision_Trees.tex
+        - Chapters/Ensemble_learning.aux
+        - Chapters/Ensemble_learning.tex
         - Chapters/Machine_learning_landscape.aux
         - Chapters/Machine_learning_landscape.tex
         - Chapters/Support_vector_machines.aux
@@ -229,6 +247,7 @@ files:
       outputs:
         - Chapters/Classification.aux
         - Chapters/Decision_Trees.aux
+        - Chapters/Ensemble_learning.aux
         - Chapters/Machine_learning_landscape.aux
         - Chapters/Support_vector_machines.aux
         - Chapters/Training_models.aux
@@ -239,7 +258,7 @@ files:
       calls: []
     type: ParsedFileListing
   Compendium.log-ParsedLaTeXLog:
-    timeStamp: 2020-12-26T18:24:57.017Z
+    timeStamp: 2020-12-29T18:22:22.413Z
     jobNames: []
     value:
       messages:
@@ -353,26 +372,12 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 110
-              end: 111
-        - severity: info
-          name: pdfTeX
-          category: LaTeX Font
-          text: Checking defaults for OMS/cmsy/m/n ... okay
-          source:
-            file: Compendium.tex
-            range:
-              start: 58
-              end: 58
-          log:
-            file: Compendium.log
-            range:
               start: 112
               end: 113
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: Checking defaults for OT1/cmr/m/n ... okay
+          text: Checking defaults for OMS/cmsy/m/n ... okay
           source:
             file: Compendium.tex
             range:
@@ -386,7 +391,7 @@ files:
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: Checking defaults for T1/cmr/m/n ... okay
+          text: Checking defaults for OT1/cmr/m/n ... okay
           source:
             file: Compendium.tex
             range:
@@ -400,7 +405,7 @@ files:
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: Checking defaults for TS1/cmr/m/n ... okay
+          text: Checking defaults for T1/cmr/m/n ... okay
           source:
             file: Compendium.tex
             range:
@@ -414,7 +419,7 @@ files:
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: Checking defaults for OMX/cmex/m/n ... okay
+          text: Checking defaults for TS1/cmr/m/n ... okay
           source:
             file: Compendium.tex
             range:
@@ -428,7 +433,7 @@ files:
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: Checking defaults for U/cmr/m/n ... okay
+          text: Checking defaults for OMX/cmex/m/n ... okay
           source:
             file: Compendium.tex
             range:
@@ -442,21 +447,21 @@ files:
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: External font `cmex10' loaded for size <12>.
+          text: Checking defaults for U/cmr/m/n ... okay
           source:
             file: Compendium.tex
             range:
-              start: 62
-              end: 62
+              start: 58
+              end: 58
           log:
             file: Compendium.log
             range:
-              start: 173
-              end: 174
+              start: 124
+              end: 125
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: External font `cmex10' loaded for size <8>.
+          text: External font `cmex10' loaded for size <12>.
           source:
             file: Compendium.tex
             range:
@@ -470,7 +475,7 @@ files:
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: External font `cmex10' loaded for size <6>.
+          text: External font `cmex10' loaded for size <8>.
           source:
             file: Compendium.tex
             range:
@@ -484,21 +489,21 @@ files:
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: External font `cmex10' loaded for size <7>.
+          text: External font `cmex10' loaded for size <6>.
           source:
-            file: Chapters/Machine_learning_landscape.tex
+            file: Compendium.tex
             range:
-              start: 10
-              end: 10
+              start: 62
+              end: 62
           log:
             file: Compendium.log
             range:
-              start: 184
-              end: 185
+              start: 179
+              end: 180
         - severity: info
           name: pdfTeX
           category: LaTeX Font
-          text: External font `cmex10' loaded for size <5>.
+          text: External font `cmex10' loaded for size <7>.
           source:
             file: Chapters/Machine_learning_landscape.tex
             range:
@@ -512,6 +517,20 @@ files:
         - severity: info
           name: pdfTeX
           category: LaTeX Font
+          text: External font `cmex10' loaded for size <5>.
+          source:
+            file: Chapters/Machine_learning_landscape.tex
+            range:
+              start: 10
+              end: 10
+          log:
+            file: Compendium.log
+            range:
+              start: 188
+              end: 189
+        - severity: info
+          name: pdfTeX
+          category: LaTeX Font
           text: Trying to load font information for OML+cmr
           source:
             file: Chapters/end-to-end_machine_learning_project.tex
@@ -521,8 +540,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 249
-              end: 250
+              start: 251
+              end: 252
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -537,8 +556,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 254
-              end: 255
+              start: 256
+              end: 257
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -551,8 +570,8 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 308
-              end: 309
+              start: 310
+              end: 311
         - severity: info
           name: pdfTeX
           category: LaTeX Font
@@ -567,29 +586,30 @@ files:
           log:
             file: Compendium.log
             range:
-              start: 313
-              end: 314
+              start: 315
+              end: 316
       inputs: []
       outputs:
         - Compendium.pdf
       calls: []
     type: ParsedLaTeXLog
   Compendium.aux:
-    timeStamp: 2020-12-26T18:37:30.709Z
+    timeStamp: 2020-12-29T20:54:36.906Z
     jobNames: []
-    hash: eiF5jHEEty5Eh5a9C5uKNmKfg9UOkjY7Q39OubLyqnE=
+    hash: Bd7C90vTgjD3rSMoctApCAzwDDrC3PB1tCOwOzx1P0E=
     type: LaTeXAuxilary
   Compendium.fls:
-    timeStamp: 2020-12-26T18:37:30.732Z
+    timeStamp: 2020-12-29T20:54:36.966Z
     jobNames: []
-    hash: 1zeNJ6wgUlayWSgJAwrc+IpSDAiv4j21XmGdPsvt6qs=
+    hash: xhKQlR+bQnJadBJ0CO+u/5cnNWpcNbN5angUGcInUyU=
     type: FileListing
   Compendium.aux-ParsedLaTeXAuxilary:
-    timeStamp: 2020-12-26T13:49:07.853Z
+    timeStamp: 2020-12-29T17:19:17.628Z
     jobNames: []
     value:
       commands:
         - relax
+        - '@input'
         - '@input'
         - '@input'
         - '@input'
@@ -801,16 +821,16 @@ files:
     timeStamp: 2020-06-07T15:57:48.000Z
     jobNames: []
   Compendium.pdf:
-    timeStamp: 2020-12-26T18:37:30.732Z
+    timeStamp: 2020-12-29T20:54:36.970Z
     jobNames: []
-    hash: lv/wbiSza53jnZ+ytIgCkHhF1JMxyV0oQeazVOkRseo=
+    hash: qIsJGjGLBWky3Vjc8q7WQJRtcbTUdtn7gZMKUZFH+ec=
     type: PortableDocumentFormat
   /usr/share/texmf-dist/tex/latex/base/omscmr.fd:
     timeStamp: 2020-06-07T15:57:48.000Z
     jobNames: []
     type: FontDescription
   Chapters/Machine_learning_landscape.aux:
-    timeStamp: 2020-12-26T18:37:30.449Z
+    timeStamp: 2020-12-29T20:54:36.340Z
     jobNames: []
     hash: HrRAHmkymBM29YrmQ5SW7CW4xCpVGcg6C04IrGQ3I1g=
     type: LaTeXAuxilary
@@ -857,7 +877,7 @@ files:
         - setcounter
     type: ParsedLaTeXAuxilary
   Chapters/end-to-end_machine_learning_project.aux:
-    timeStamp: 2020-12-26T18:37:30.686Z
+    timeStamp: 2020-12-29T20:54:36.736Z
     jobNames: []
     hash: WN8ehIwi+vHk1gyprNhWv8I1cYsgNRJSSQE9fE1lwAg=
     type: LaTeXAuxilary
@@ -867,7 +887,7 @@ files:
     hash: Qm6/7jgSsq+/tsy/E4MxElJI/5vdaRcftwv6qcCVfn0=
     type: TeX
   Chapters/end-to-end_machine_learning_project.aux-ParsedLaTeXAuxilary:
-    timeStamp: 2020-12-26T12:41:36.239Z
+    timeStamp: 2020-12-29T17:08:37.859Z
     jobNames: []
     value:
       commands:
@@ -901,7 +921,7 @@ files:
         - setcounter
     type: ParsedLaTeXAuxilary
   Chapters/Classification.aux:
-    timeStamp: 2020-12-26T18:37:30.689Z
+    timeStamp: 2020-12-29T20:54:36.736Z
     jobNames: []
     hash: VepifnjJcGDEFrmeNuDwo0OgDpDBpb7jaU8YIEX2Wp4=
     type: LaTeXAuxilary
@@ -938,17 +958,17 @@ files:
         - setcounter
     type: ParsedLaTeXAuxilary
   Chapters/Decision_Trees.aux:
-    timeStamp: 2020-12-26T18:37:30.709Z
+    timeStamp: 2020-12-29T20:54:36.773Z
     jobNames: []
-    hash: yI/Stt0YOJKNz2K+kS1V61yFQSGy1OlquXj2klODmrk=
+    hash: mjQHsWOV6RSFHi0hJ/MwYNFvAvMM7ZZ6zTdDY6yBClA=
     type: LaTeXAuxilary
   Chapters/Decision_Trees.tex:
-    timeStamp: 2020-12-26T18:37:26.312Z
+    timeStamp: 2020-12-29T14:23:11.070Z
     jobNames: []
-    hash: k7qNUIMGRQmlHDYMIN9sunqLV1yN17ZhP/qPgfB/UUE=
+    hash: U7x+Xhik2o1LAscZW7j26dLgNk5YWwI8zmK95546gJs=
     type: TeX
   Chapters/Training_models.aux:
-    timeStamp: 2020-12-26T18:37:30.689Z
+    timeStamp: 2020-12-29T20:54:36.736Z
     jobNames: []
     hash: 3L2flMau/KqSK3UutFTpIbZ6cbswqwejLsBitDX7+C0=
     type: LaTeXAuxilary
@@ -958,11 +978,13 @@ files:
     hash: gsT93kuIpzbU6pYtT4Zc5y/K1T+ChYdsM0h8gZnDtxs=
     type: TeX
   Chapters/Decision_Trees.aux-ParsedLaTeXAuxilary:
-    timeStamp: 2020-12-26T17:58:18.490Z
+    timeStamp: 2020-12-29T12:40:37.511Z
     jobNames: []
     value:
       commands:
         - relax
+        - '@writefile'
+        - '@writefile'
         - '@writefile'
         - '@writefile'
         - '@writefile'
@@ -1015,7 +1037,7 @@ files:
         - setcounter
     type: ParsedLaTeXAuxilary
   Chapters/Support_vector_machines.aux:
-    timeStamp: 2020-12-26T18:37:30.689Z
+    timeStamp: 2020-12-29T20:54:36.740Z
     jobNames: []
     hash: 8GJL+TlgICeHnT427vj5SEGwpDnnonJx7aZGLGmPLfo=
     type: LaTeXAuxilary
@@ -1057,11 +1079,109 @@ files:
   /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb:
     timeStamp: 2020-06-07T15:57:48.000Z
     jobNames: []
-  Compendium.synctex.gz:
-    timeStamp: 2020-12-26T18:37:30.736Z
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
     jobNames: []
-    hash: ow3+lqfDnlBP9R2qT3vOVmMd2hOTeYkm8exNsXA1tu0=
+  Chapters/Ensemble_learning.aux:
+    timeStamp: 2020-12-29T20:54:36.906Z
+    jobNames: []
+    hash: B0jMYSt7hWOK2AWNQWdsjRIpyFz2l2/QT64ddlMm28k=
+    type: LaTeXAuxilary
+  Chapters/Ensemble_learning.tex:
+    timeStamp: 2020-12-29T20:54:31.140Z
+    jobNames: []
+    hash: 7HHOfpvyocNbaM3ADnAVonJma8Ntt+GO8fwdQjNs9x0=
+    type: TeX
+  Chapters/Ensemble_learning.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2020-12-29T20:54:37.064Z
+    jobNames: []
+    value:
+      commands:
+        - relax
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@writefile'
+        - '@setckpt'
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+        - setcounter
+    type: ParsedLaTeXAuxilary
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  Compendium.synctex.gz:
+    timeStamp: 2020-12-29T20:54:36.970Z
+    jobNames: []
+    hash: HtbJYCSXDTGGQZbNo2tM3ZF3IIN9e/SxhsVZbYSQuaU=
     type: SyncTeX
+  /usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/tfm/public/cm/cmti12.tfm:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
+  /usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb:
+    timeStamp: 2020-06-07T15:57:48.000Z
+    jobNames: []
 rules:
   - name: ApplyOptions
     command: load
@@ -1310,6 +1430,46 @@ rules:
         type: default
       - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
         type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+        type: default
+      - file: Chapters/Ensemble_learning.aux
+        type: default
+      - file: Chapters/Ensemble_learning.tex
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
+        type: default
+      - file: /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
+        type: default
+      - file: /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
+        type: default
+      - file: /usr/share/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
+        type: default
+      - file: /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb
+        type: default
+      - file: /usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb
+        type: default
     outputs:
       - file: Compendium.aux
         type: default
@@ -1330,6 +1490,8 @@ rules:
       - file: Chapters/Training_models.aux
         type: default
       - file: Chapters/Support_vector_machines.aux
+        type: default
+      - file: Chapters/Ensemble_learning.aux
         type: default
       - file: Compendium.synctex.gz
         type: target
@@ -1478,4 +1640,15 @@ rules:
         type: default
     outputs:
       - file: Chapters/Support_vector_machines.aux-ParsedLaTeXAuxilary
+        type: default
+  - name: ParseLaTeXAuxilary
+    command: build
+    phase: execute
+    parameters:
+      - Chapters/Ensemble_learning.aux
+    inputs:
+      - file: Chapters/Ensemble_learning.aux
+        type: default
+    outputs:
+      - file: Chapters/Ensemble_learning.aux-ParsedLaTeXAuxilary
         type: default

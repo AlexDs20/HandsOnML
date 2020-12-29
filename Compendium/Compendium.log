@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.11.10)  26 DEC 2020 19:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.11.10)  29 DEC 2020 21:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -106,7 +106,9 @@ ls.aux)
 (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Support_vecto
 r_machines.aux)
 (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Decision_Tree
-s.aux))
+s.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Ensemble_lear
+ning.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
 LaTeX Font Info:    ... okay on input line 58.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
@@ -428,7 +430,117 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
  []
 
-) [19] (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.aux
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--108
+
+ []
+
+[19]
+Overfull \hbox (2.05017pt too wide) in paragraph at lines 122--126
+\OT1/cmr/m/n/10 Again, this is prone to over-fit-ting and reg-u-lar-iza-tion sh
+ould be used (e.g. [][]\OT1/cmtt/m/n/10 min_samples_leaf[]\OT1/cmr/m/n/10 ). 
+ []
+
+) [20]
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Ensemble_lear
+ning.tex
+Underfull \hbox (badness 10000) in paragraph at lines 11--13
+
+ []
+
+
+Overfull \hbox (33.66582pt too wide) in paragraph at lines 16--17
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--22
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
+
+ []
+
+[21
+
+
+]
+Overfull \hbox (35.02068pt too wide) in paragraph at lines 75--79
+[][]\OT1/cmtt/m/n/10 BaggingClassifier []\OT1/cmr/m/n/10 can sam-ple fea-tures 
+us-ing [][]\OT1/cmtt/m/n/10 max_features []\OT1/cmr/m/n/10 and [][]\OT1/cmtt/m/
+n/10 bootstrap_features[]\OT1/cmr/m/n/10 .(work
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--79
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
+
+ []
+
+
+Overfull \hbox (64.66591pt too wide) in paragraph at lines 115--116
+[][][][][][][][][][][][][][] 
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
+
+ []
+
+[23]
+Overfull \hbox (3.66551pt too wide) in paragraph at lines 200--201
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.66551pt too wide) in paragraph at lines 204--205
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.66551pt too wide) in paragraph at lines 208--209
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (27.66576pt too wide) in paragraph at lines 211--212
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.66551pt too wide) in paragraph at lines 213--214
+[][][][][][][][][][] 
+ []
+
+[24]
+Overfull \hbox (3.66551pt too wide) in paragraph at lines 229--230
+[][][][][][][][][][][][][][] 
+ []
+
+[25]) [26] (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.
+aux
 (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Machine_learn
 ing_landscape.aux)
 (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/end-to-end_ma
@@ -440,33 +552,44 @@ ls.aux)
 (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Support_vecto
 r_machines.aux)
 (/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Decision_Tree
-s.aux)) ) 
+s.aux)
+(/home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Ensemble_lear
+ning.aux)) ) 
 Here is how much of TeX's memory you used:
- 3908 strings out of 480478
- 56930 string characters out of 5905958
- 499256 words of memory out of 5000000
- 19895 multiletter control sequences out of 15000+600000
- 538476 words of font info for 44 fonts, out of 8000000 for 9000
+ 4016 strings out of 480478
+ 58985 string characters out of 5905958
+ 499526 words of memory out of 5000000
+ 19991 multiletter control sequences out of 15000+600000
+ 539950 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  32i,9n,45p,323b,1687s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr
-/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.p
-fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dis
-t/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/p
-ublic/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/txfonts/t
-1xbtt.pfb></usr/share/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb>
-Output written on Compendium.pdf (19 pages, 222549 bytes).
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</
+usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sh
+are/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
+r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10
+.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/f
+onts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/txfonts/t1xb
+tt.pfb></usr/share/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb>
+Output written on Compendium.pdf (26 pages, 340429 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
+ 198 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

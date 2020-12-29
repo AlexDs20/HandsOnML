@@ -1,0 +1,266 @@
+\newpage
+
+\section{Ensemble learning and Random Forest}
+Having several classifiers $\rightarrow$ use all of them to predict an output.\\
+This usually gives better prediction than each of them separately
+
+
+\subsection{Voting Classifier}
+\verb;Hard voring classifier:; selecting the class with most votes
+
+This works best if the classifiers are independent from each other:\\
+$\Rightarrow$ wroks best for different algorithms which makes different types of errors.\\
+
+\begin{python}
+    voting_clf = VotingClassifier(
+        estimators=[('lr', log_clf), ('rf', rnd_clf), ('svc', svm_clf)],
+        voting='hard')
+\end{python}
+If all the classifiers have a \verb;.predict_proba;
+$\Rightarrow$ the classification can be made using probabilities (average) using
+\verb;voting='soft'; for the voting classifier.\\
+
+
+\subsubsection{Bagging/Pasting}
+Alternative ways to get a diverse set of predictors is to use the same algorithm
+for every predictor but to train them on different subsets of the training set.
+But always picking a number of instances equal to the size of the training set.
+
+\begin{description}
+    \item[Bagging] (bootstrap aggregating) \hfill\\
+        When sampling is performed \verb;with; replacement.\\
+        It allows a sample (training instance) to be picked several time for one predictor and for several predictors.
+    \item[Pasting] \hfill\\
+        When sampling is performed \verb;without; replacement.\\
+        Samples can be repicked but only across multiple predictors.
+\end{description}
+
+$\Rightarrow$ prediction for a new instance by aggregating all the predictions.\\
+aggregation: \verb;statistical mode;
+\begin{itemize}
+    \item = hard voting for classifications.
+    \item = average for regression.
+\end{itemize}
+Each predictor has a higher bias but the aggregation reduces varience and bias.\\
+
+The predictors can be training in parallel and also the predictions.\\
+$\rightarrow$ Makes bagging and pasting scale well.
+
+For bagging and pasting using \verb;sklearn;:
+\begin{python}
+    from sklearn.ensemble import BaggingClassifier
+    bag_clf = BaggingClassifier(
+            DecisionTreeClassifier(), n_estimators=500,
+            max_samples=100, bootstrap=True, n_jobs=-1)
+\end{python}
+
+Bootstraping $\rightarrow$ more diversity in the subsets $\Rightarrow$ slightly
+better bias than pasting.\\
+
+Often bagging leads to better models.
+But cross-validation of bagging and pasting can be done too see what works best.
+
+\begin{description}
+    \item[out-of-bag] \hfill\\
+        Because bagging allows for repicking $\rightarrow$ only about 63\% of the
+        instances get used.\\
+        The remaining 37\% are out-of-bag (and not sampled by that one classifier).\\
+        Because the predictor never sees those instances, they can be used for evaluating the expected accuracy on the test set:
+        \begin{python}
+            bag_clf = BaggingClassifier(
+                DecisionTreeClassifier(), n_estimators=500,
+                bootstrap=True, n_jobs=-1, oob_score=True)
+            bag_clf.oob_score_
+        \end{python}
+    \item[Random Patches and Random Subspaces] \hfill\\
+        \verb;BaggingClassifier; can sample features using \verb;max_features;
+        and \verb;bootstrap_features;.(work like\verb;samples; and
+        \verb;boostrap; but for features).\\
+        \begin{itemize}
+            \item \textbf{Random Patches:} sampling instances and features\\
+            $\Rightarrow$ useful when \textit{high-dimensional inputs} (e.g.\ Images).
+            \item \textbf{Random Subspaces:} only sampling features\\
+            $\Rightarrow$ keeping all training instances ($\max_samples=1$, $bootstrap=0$).
+        \end{itemize}
+\end{description}
+
+\subsection{Random Forests}
+Random Forest = ensemble of decision trees.\\
+Usually with \verb;max_samples; = size of training set.\\
+
+Using \verb;RandomForestClassifier; is more optimized for decision trees.
+\begin{python}
+    rnd_clf = RandomForestClassifier(n_estimators=500,
+                max_leaf_nodes=16, n_jobs=-1)
+\end{python}
+
+Random forest $\rightarrow$ more randomness:
+\begin{itemize}
+    \item at each node $\rightarrow$ look for the best feature in a random subset of features (instead of all features.)
+\end{itemize}
+
+\begin{description}
+    \item[Extra-Trees] Extremely Randomized Trees ensemble \hfill\\
+        Can make the trees more random by using random thresholds for each feature rather than searching for the best thresholds.\\
+        It makes it faster than standard Random Forest.
+        \begin{python}
+            from sklearn.ensemble import ExtraTreesClassifier
+            et_clf = ExtraTreesClassifier()
+        \end{python}
+    \item[ExtraTreesRegressor] \hfill\\
+        Similar API to \verb;RandomForestRegressor;.
+    \item[Feature Importance] \hfill\\
+        By looking at which feature reduces the impurity the most on average (across all trees).
+        \begin{python}
+            rnd_clf = RandomForestClassifier(n_estimators=500, n_jobs=-1)
+            rnd_clf.fit(X, y)
+            rnd_clf.feature_importances_
+        \end{python}
+\end{description}
+
+
+\subsection{Boosting}
+\begin{description}
+    \item[Boosting] \hfill\\
+    Any ensemble method that combine weak learniners into a strong learner.\\
+    Idea:
+    \begin{itemize}
+        \item Train predictors sequentially, each trying to correct its predecessor.
+    \end{itemize}
+\end{description}
+
+\subsubsection{AdaBoost (Adaptive Boosting)}
+To be a better predictor than predecessor:\\
+$\rightarrow$ Adjust for the instances where the predecessor underfitted.\\
+$\Rightarrow$ Predictors focus more and more on the harder instances.
+
+\large{\textbf{AdaBoost:}}
+\begin{enumerate}
+    \item trains a base classifier (e.g.\ Decision Tree) and makes prediction on training set.
+    \item Increase the relative weight of misclassified training instances
+    \item Trains a new classifier with updated weights and make new predictions on the training set.
+    \item etc
+\end{enumerate}
+
+Once all predictors are trained $\rightarrow$ make prediction:
+\begin{itemize}
+    \item like bagging/pasting but the predictors have different weights depending on their accuracy on training set
+\end{itemize}
+
+Can only be partially parallelized!
+
+\begin{description}
+    \item[Algorithm] \hfill\\
+        \begin{enumerate}
+            \item Each instance initial weight is set: $w^{(i)}= 1/m$.
+            \item Train first predictor and calculate the weighted error rate $r_1$ for this predictor:
+                \begin{equation}
+                    r_j = \frac{ \sum_{ i=1, \hat{y}_j^{(i)}\neq y^{(i)} }^m w^{(i)}}{ \sum_{i=1}^m  w^{(i)}}
+                \end{equation}
+            \item Then calculate the predictors weights with $\eta$ the learning rate:
+                \begin{equation}
+                    \alpha_i = \eta\log\frac{1-r_j}{r_j}
+                \end{equation}
+            \item update the weights of the misclassified instances
+                \begin{equation}
+                    w^{(i)} \leftarrow w^{(i)}\exp(\alpha_j)    \mathrm{if \hat{y}_j^{(i)}\neq y^{(i)}}
+                \end{equation}
+                otherwise, keep the same weight.
+            \item Normalize all the weights
+            \item Train a NEW predictor with the UPDATED weights
+        \end{enumerate}
+    \item[Predictions] \hfill\\
+    Take all the predictor weights and take the class whose sum of weights is largest:
+    \begin{equation}
+        \hat{y}\left(\mathbf{x}\right) = \mathrm{argmax}_k \sum_{j=1, \hat{y}_j\left(\mathbf{x}\right)=k}^N \alpha_j
+    \end{equation}
+    N = number of predictors
+\end{description}
+
+Scikit-learn uses a multiclass version of AdaBoost \verb;SAMME; (Stagewise Additive Modeling using a Multiclass Exponential loss function) which is similar to adaboost if only two classes.
+
+If predictors can estimate class probabilities (better than using predictions)
+\verb;predict_proba(); $\Rightarrow$ \verb;SAMME.R;
+
+\begin{python}
+    fromsklearn.ensemble import AdaBoostClassifier
+    ada_clf = AdaBoostClassifier(
+            DecisionTreeClassifier(max_depth=1), n_estimators=500,
+            algorithm="SAMME.R", learning_rate=0.5)
+\end{python}
+
+
+\subsubsection{Gradient Boosting}
+Sequentially adding predictors to an ensemble, always correcting the previous ones.
+
+Gradient Boosting tries to fit the new predictor to the residual errors made by the previous predictor.
+
+\begin{python}
+    from sklearn.tree import DecisionTreeRegressor
+    tree_reg1 = DecisionTreeRegressor(max_depth=2, random_state=42)
+    tree_reg1.fit(X, y)
+
+    y2 = y - tree_reg1.predict(X)
+    tree_reg2 = DecisionTreeRegressor(max_depth=2, random_state=42)
+    tree_reg2.fit(X, y2)
+
+    y3 = y2 - tree_reg2.predict(X)
+    tree_reg3 = DecisionTreeRegressor(max_depth=2, random_state=42)
+    tree_reg3.fit(X, y3)
+
+    # Can make a prediction by adding up the predictions from all trees
+    y_pred = sum(tree.predict([[0.8]]) for tree in (tree_reg1,
+                                            tree_reg2, tree_reg3) )
+\end{python}
+
+Instead of doing it manually $\rightarrow$ \verb;GradientBoostingRegressor;.
+\begin{python}
+    from sklearn.ensemble import GradientBoostingRegressor
+    gbrt = GradientBoostingRegressor(max_depth=2,
+                        n_estimators=3, learning_rate=1.)
+    gbrt.fit(X, y)
+\end{python}
+\verb;learning_rate;: scales the contrib of each tree. If low value $\rightarrow$ need more trees but will usually generalize better.
+
+The complexity of the trees and how many trees $\rightarrow$ often underfitting or overfitting.\\
+$\Rightarrow$ possibility is to use: early stop \verb;staged_predict();.
+
+\begin{python}
+    gbrt = GradientBoostingRegressor(max_depth=2, n_estimators=120,
+                random_state=42)
+    gbrt.fit(X_train, y_train)
+
+    errors = [mean_squared_error(y_val, y_pred)
+                for y_pred in gbrt.staged_predict(X_val)]
+    bst_n_estimators = np.argmin(errors) + 1
+
+    gbrt_best = GradientBoostingRegressor(max_depth=2,
+            n_estimators=bst_n_estimators, random_state=42)
+    gbrt_best.fit(X_train, y_train)
+\end{python}
+
+\verb;GradientBoostingRegressor; has \verb;subsample; hyperparameter: to train on a fraction of the training instances.\\
+$\Rightarrow$ \textbf{Stochastic Gradient Boosting}
+
+An optimized implementation of Gradient Boosting : \verb;XGBoost;
+\begin{python}
+    import xgboost
+    xgb_reg = xgboost.XGBRegressor()
+    xgb_reg.fit(X_train, y_train)
+    y_pred = xgb_reg.predict(X_val)
+\end{python}
+
+\subsection{Stacking (stacked generalization)}
+Ensemble method.
+\begin{itemize}
+    \item Instead of using trivial functions for aggragating the predictors (e.g.\ hard voting)\\
+    $\rightarrow$ Training a model to do the aggregation (a \verb;blender; or \verb;meta learner;)
+    \item The \verb;blender; takes the predictions from each predictor and makes a final prediction
+\end{itemize}
+
+\begin{enumerate}
+    \item Training set is split into two subsets
+    \item The first subset is used to train the predictors
+    \item The trained predictors are used to make predictions on the second sub-set (\verb;held out set;) (to ensure clean preductions)
+    \item The predicted values are used as input features and keep their target values.
+\end{enumerate}
