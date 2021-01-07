@@ -107,6 +107,9 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
+OUTPUT Chapters/Dimensionality_reduction.aux
+INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Dimensionality_reduction.tex
+INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Dimensionality_reduction.tex
 INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Compendium.aux
 INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Machine_learning_landscape.aux
 INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Machine_learning_landscape.aux
@@ -122,6 +125,8 @@ INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Decision_
 INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Decision_Trees.aux
 INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Ensemble_learning.aux
 INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Ensemble_learning.aux
+INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Dimensionality_reduction.aux
+INPUT /home/alexandre/Documents/Projects/HandsOnML/Compendium/Chapters/Dimensionality_reduction.aux
 INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb

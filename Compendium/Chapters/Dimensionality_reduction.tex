@@ -1,0 +1,187 @@
+\newpage
+\section{Dimensionality Reduction}
+
+In data, often too many features (more than necessary).\\
+$\rightarrow$ Can make it harder to predict: \verb;Curse of dimensionality;.\\
+
+In general reducing dimensionality will result in lower performance but faster training.
+Rarely (but sometimes), it may get rid of undesirable features and will perform better than without dimensionality
+reduction.\\
+
+Dimensionality reduction: useful for data visualization (reducing to 2/3 dimensions $\rightarrow$ can make plot easily
+understandable by people.)\\
+
+Two main approaches:\\
+\begin{itemize}
+    \item Projection
+    \item Manifold Learning
+\end{itemize}
+
+Manifold techniques: PCA, Kernel PCA, and LLE.\\
+
+Problem of high dimensions:
+\begin{itemize}
+    \item Typically, two points are farther apart in higher dimensions than lower dimensions
+    \item[$\rightarrow$] Training instances are sparse and far from each other
+    \item[$\rightarrow$] New instances may be far from training instances $\Rightarrow$ make worse predictions than in
+        lower dimension (larger extrapolation).
+    \item[$\rightarrow$] The larger the dimensions, the greater the risk of overfitting.
+\end{itemize}
+
+Theoretical solution:
+\begin{itemize}
+    \item Increase the size of the training set
+\end{itemize}
+In practice, not possible, the number of instances needed grows exponentionally with the dimension
+
+%------------------------------
+\subsection{Main approaches to dimensionality reduction}
+\begin{description}
+    \item[Projection] \hfill\\
+        \begin{itemize}
+            \item Often the data are not spread out uniformly across dimensions
+            \item[\arrow] Project onto the subspace.
+            \item Projection not always the best option (bad if subspace is not flat i.e.\ if it rolls in the higher
+                dimensional space)
+            \item[\Arrow] Manifold Learning
+        \end{itemize}
+
+    \item[Manifold Learning] \hfill\\
+        \begin{itemize}
+            \item d-dimensional manifold in a n-dim.\ space with the manifold locally a hyper-plane.
+            \item Dimensionality reduction \arrow\ modeling the manifold on which the training instances are (= Manifold
+                Learning)
+            \item Manifold assumption:
+                \begin{itemize}
+                    \item real-world high-d datasets lie close to a much lower dimensional manifold.
+                \end{itemize}
+        \end{itemize}
+\end{description}
+
+%------------------------------
+\subsection{PCA}
+\begin{itemize}
+    \item Most popular
+    \begin{enumerate}
+        \item Identifies the hyperplane that lies closest to the data
+        \item Project the data onto it
+    \end{enumerate}
+    \item Idea: Find the subspace (Spectral theorem or more generally: Singular Value Decomposition)
+    \item Each axis is called the i$^\mathrm{th}$ principal component
+    \item Project data onto the d-dimensional hyperplane using the relevant principal components:\\
+        $\mathbf{X}_{d-project} = \mathbf{X} \mathbf{W}_d$
+\end{itemize}
+
+\begin{python}
+    from sklearn.decomposition import PCA
+    # Does not require centering when using sklearn
+    X = load_data()
+    # Keep the 2 components corresponding to largest singular (eigenvalue)
+    pca = PCA(n_components = 2)
+    X2D = pca.fit_transform(X)
+    # Contains the basis vector of the subspace
+    print(pca.components_)
+    # proportion of dataset's variance along those axis:
+    print(pca.explained_variance_)
+\end{python}
+
+\begin{enumerate}
+    \item [number of dimensions] \hfill\\
+        \begin{itemize}
+            \item Until the variance adds up to a certain \% (e.g.\ 95\%).\\
+            \item Or, if for viz: 2, 3, max 4
+        \end{itemize}
+        To reach a certain variance, several ways:
+        \begin{python}
+            pca = PCA()
+            pca.fit(X_train)
+            cumsum = np.cumsum(pca.explained_variance_ratio_)
+            d = np.argmax(cumsum>=0.95) + 1
+            pca = PCA(n_components = d)     # Should be part of the pipeline
+            X_reduced = pca.fit_transform(X_train)
+            # We can "get back the data" (with a bit of loss of course)
+            # by doing the inverse transfo.
+            X_recovered = pca.inverse_transform(X_reduced)
+        \end{python}
+        or more simply:
+        \begin{python}
+            pca = PCA(n_components=0.95)
+            X_reduced = pca.fit_transform(X_train)
+        \end{python}
+\end{enumerate}
+To speed it up, one can use randomized PCA which search for approximate vectors:
+\begin{python}
+    rnd_pca = PCA(n_components=154, svd_solver="randomized")
+    X_reduced = rnd_pca.fit_transform(X_train)
+\end{python}
+
+This implementation requires the whole dataset, if not possible (not enough memory or online training), use incremental PCA:
+\begin{itemize}
+    \item[\arrow] use mini-batches instead of the full data set
+    \item[\Arrow] use \verb;partial_fit;
+        \begin{python}
+            from sklearn.decomposition import IncrementalPCA
+            n_batches = 100
+            inc_pca = IncrementalPCA(n_components=154)
+            for X_batch in np.array_split(X_train, n_batches):
+                inc_pca.partial_fit(X_batch)
+
+            X_reduced = inc_pca.transform(X_train)
+        \end{python}
+\end{itemize}
+
+%------------------------------
+\subsection{Kernel PCA (kPCA)}
+Similar to the kernel trick used for SVM.\\
+Allows, nonlinear projections for dimensionality reduction.\\
+Good at:
+\begin{itemize}
+    \item preserving clusters of instances after projection
+    \item unrolling datasets lying in a twisted manifold.
+\end{itemize}
+
+Unsupervised ML:
+\begin{itemize}
+    \item[\arrow] no clear performance measure
+    \item If used for classification \arrow grid search for kernel and hyperparameters that gives best perf.\ on
+        classification
+        \begin{python}
+        clf = Pipeline([
+            ("kpca", KernelPCA(n_components=2)),
+            ("log_reg", LogisticRegression())
+            ])
+
+        param_grid = [{
+            "kpca__gamma": np.linspace(0.03, 0.05, 10),
+            "kpca__kernel": ["rbf", "sigmoid"]
+            }]
+
+        grid_search = GridSearchCV(clf, param_grid, cv=3)
+        grid_search.fit(X, y)
+        print(grid_search.best_params_)
+        \end{python}
+    \item If really unsupervised: \arrow hyperparameters that minimize the reconstruction error
+    \item[\arrow] set \verb;fit_inverse_transform=True;
+        \begin{python}
+        rbf_pca = KernelPCA(n_components=2, kernel="rbf", gamma=0.0433, fit_inverse_transform=True)
+        X_reduced = rbf_pca.fit_transform(X)
+        X_preimage = rbf_pca.inverse_transform(X_reduced)
+        print(mean_squared_error(X, X_preimage))
+        \end{python}
+    \item[\Arrow] can now use grid-search with cross-validation to find the kernel and hyperparameters
+\end{itemize}
+
+%------------------------------
+\subsection{LLE}
+\begin{itemize}
+    \item Locally Linear Embedded
+    \item uses manifold learning i.e.\ does not rely on projections
+    \item How it works:
+    \begin{itemize}
+        \item measures how each training instances are linearly related to its closest neighbour (\verb;n_neighbors;)
+        \item finds a low-dimensional representation of the training set where the local relationships are satisfied
+    \end{itemize}
+    \item Good at unrolling manifold if not too much noise
+    \item How it works:
+\end{itemize}
+
