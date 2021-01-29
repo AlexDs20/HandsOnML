@@ -97,5 +97,56 @@ The solution may not be optimal because of the initialization of the centroid.
 Based on local density estimation.\\
 It allows to identify clusters of arbitrary shapes as continuous regions of high density.
 \begin{itemize}
-    \item For each instance, counts how many instances are close to it: \verb;$\epsilon$-neighborhood;
+    \item For each instance, counts how many instances are close to it: $\epsilon$\verb;-neighborhood;
+    \item if at least \verb;min_samples; in $\epsilon$\verb;-neighborhood; \arrow it is a core instance (located in
+        dense region)
+    \item all instances around a core instance form a cluster
+    \item instances that does not have a core instance \arrow anomaly
 \end{itemize}
+
+Works well if
+\begin{itemize}
+    \item clusters are dense enough
+    \item clusters are separated by low-density regions
+\end{itemize}
+
+\begin{python}
+    from sklearn.cluster import DBSCAN
+    X, y = load_data()
+    dbscan = DBSCAN(eps=0.2, min_samples=5)
+    dbscan.fit(X)
+\end{python}
+Note that the choice of $\epsilon$ and \verb;min_samples; have drastic effect.
+
+DBSCAN
+\begin{itemize}
+    \item no predict method \Arrow use another method (e.g.\ KNN)
+    \item cannot identify clusters of different densities \arrow use HDBSCAN (scan through epsilon for best stability)
+\end{itemize}
+
+%------------------
+\subsubsection{Other Clustering Algorithms}
+%------------------
+\begin{description}
+    \item[Agglomerative clustering] \hfill\\
+        Connects smaller clusters to make larger ones and can choose the cluster scale
+    \item[BIRCH] \hfill\\
+        Designed for large datasets, if number of features $<20$.
+    \item[Mean-Shift] \hfill\\
+        Creates circles that are shifted to find local density maximum.\\
+        Tends to split a cluster of varying density into subclusters.\\
+        Does not scale well.
+    \item[Affinity propagation] \hfill\\
+        Creates clusters by finding the instances that are most alike.\\
+        Does not scale well.
+    \item[Spectral clustering] \hfill\\
+        reduce dimensionality of similarity matrix between the instances.\\
+        Use a clustering algorithm in the lower dimensional space.\\
+        Does not scale well.
+\end{description}
+
+
+%------------------
+\subsubsection{Gaussian Mixtures}
+%------------------
+
