@@ -1,0 +1,101 @@
+\section{Unsupervised ML}
+
+\subsection{Clustering}
+
+%------------------
+\subsubsection{K-means}
+%------------------
+K-means look for a centered point for each cluster: \verb;centroid;
+
+\begin{python}
+    from sklearn.cluster import KMeans
+    k = 5
+    kmeans = KMeans(n_clusters=k)
+    X, y = load_data()
+    y_pred = kmeans.fit_predict(X)
+\end{python}
+
+\begin{description}
+    \item[Hard clustering] \hfill\\
+            Assigning each instance to a single cluster using distance to closest centroid
+    \item[Soft clustering] \hfill\\
+            Give a score to the instance for each centroid:
+            \begin{itemize}
+                \item Distance between instance and centroid
+                \item Similarity: e.g.\ Gaussian Radial Basis
+            \end{itemize}
+\end{description}
+
+How it works:
+\begin{enumerate}
+    \item Randomly choose centroid
+    \item label instances
+    \item update centroid
+    \item Repeat 2-3
+\end{enumerate}
+
+The solution may not be optimal because of the initialization of the centroid.
+\begin{itemize}
+    \item If there is an idea of where they should be: use that as initial centroid
+    \item Compute several models with many random init centroid and measures which model is best using "inertia":\\
+            mean square distance to the closest centroid
+    \item KMeans++ : better centroid initialization (used by KMeans class in sklearn)
+\end{itemize}
+
+\begin{description}
+    \item[Preproc.]: \hfill\\
+        Scale the input features before using K-Means \arrow improves performances
+    \item[Faster or bigger data sets]: \hfill\\
+        For datasets that do not fit in memory or for better speed: training using mini-batches and \verb;memmap;
+        \begin{python}
+            import numpy as np
+            X_mm = np.memmap(file, dtype="float32", mode="readonly", shape=(m,n))
+        \end{python}
+        using minibatch usually gives worse inertia.
+    \item[Number of clusters]: how to find the optimal number of clusters? \hfill\\
+        The result may be bad if wrongly choose the number of clusters!\\
+        One way is to compute the inertia for increasing number of cluster and identify the "elbow".\\
+        Alternatively:\\
+        \begin{itemize}
+            \item \verb;Silhouette score;: mean silhouette coefficient ($b-a/\mathrm{max}(a,b)$) over all instances,
+                with $a$: the mean distance to the other instances in the same clusters and $b$: mean distance to the
+                instances of the next closest cluster.\\
+                Vary between -1 and 1:
+                \begin{itemize}
+                    \item[+1] : instance is well inside its own cluster
+                    \item[near 0] : close to cluster boundary
+                    \item[-1] : instance assigned to the wrong cluster
+                \end{itemize}
+        \end{itemize}
+        \begin{python}
+        \end{python}
+    \item[Limitations]: \hfill\\
+        \begin{itemize}
+            \item Need to be ran several times for different number of clusters
+            \item Does not behave well if clusters have varying size, different densities, non-spherical shapes\\
+                \arrow use Gaussian mixture models
+        \end{itemize}
+    \item[Semi-Supervised Learning]: \hfill\\
+        If there are many unlabeled instances and few labeled instances:\\
+        \begin{itemize}
+            \item use clustering with k clusters on all the training dataset
+            \item find the training instances closest to the centroid and use them as reference instances
+            \item These reference instances are labelled by hand
+            \item The labels can be extended to the whole or only the closest part of the cluster
+            \item Train the model on the now labeled dataset
+        \end{itemize}
+        To improve:
+        \begin{itemize}
+            \item Manually setting the instances for which the model is most uncertain
+        \end{itemize}
+\end{description}
+
+%------------------
+\subsubsection{DBSCAN}
+%------------------
+
+Based on local density estimation.\\
+It allows to identify clusters of arbitrary shapes as continuous regions of high density.
+\begin{itemize}
+    \item For each instance, counts how many instances are close to it: \verb;$\epsilon$-neighborhood;
+\end{itemize}
