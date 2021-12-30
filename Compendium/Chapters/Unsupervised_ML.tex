@@ -149,4 +149,34 @@ DBSCAN
 %------------------
 \subsubsection{Gaussian Mixtures}
 %------------------
+\begin{itemize}
+    \item Assumes that the instances come from a mixture of several Gaussian distributions
+    \items \verb;GaussianMixture;: must know the number of gaussians in advance.
+        \begin{itemize}
+            \item uses \verb;Expectation-Maximization; (EM) algorithm
+            \item Can end up converging to poor solutions
+            \item[\arrow] needs to be run several times and keep best solution
+        \end{itemize}
+    \item Gaussian mixture is a generative model, meaning that you can sample new instances from it
+    \item It can be used to detect anomalies for fraud detection or \textit{removing outliers} from a dataset before
+        training another model:
+        \begin{itemize}
+            \item instances located in low-density region can be considered anomaly.
+            \item[\arrow] must define density threshold such that x\% of the data are below the threshold (check that
+                these are indeed outliers or adjust the threshold)
+        \end{itemize}
+    \item Can be used for novelty detection if the dataset is clean (uncontaminated by outliers (anomaly detection does
+        not assume this))
+    \item find number of clusters:
+        \begin{itemize}
+            \item Find the model that minimizes a theretical information criterion, e.g.\ Bayesian information criterion
+                or Akaike information criterion
+        \end{itemize}
+\end{itemize}
 
+\subsection{Bayesian Gaussian Mixture Models}
+Instead of manually looking for the number of clusters, \arrow use \verb;BayesianGaussianMixture;.
+\begin{itemize}
+    \item Can give weights close to zero for unnecessary clusters
+    \item sen \verb;n_components; to a value larger than the optimal number of clusters
+\end{itemize}
