@@ -1,6 +1,5 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 import matplotlib.pyplot as plt
 
@@ -16,8 +15,8 @@ class RecurrentNeuron(nn.Module):
         self.h2o = nn.Linear(hidden_features, out_features)
 
     def forward(self, x, hidden):
-        new_hidden = F.sigmoid(self.i2h(x) + self.h2h(hidden))
-        out        = x + F.sigmoid(self.i2o(x) + self.h2o(hidden))
+        new_hidden = torch.sigmoid(self.i2h(x) + self.h2h(hidden))
+        out = x + torch.sigmoid(self.i2o(x) + self.h2o(hidden))
         return out, new_hidden
 
 
@@ -50,11 +49,11 @@ def plot_batch(batch):
             plt.plot(feature)
 
 
-epochs = 10
+epochs = 15
 bs = 64
 features = 1
 length = 3000
-order = 3
+order = 5
 samples = 320
 hidden_features = 128
 lr = 1e-3
@@ -69,6 +68,7 @@ dl = DataLoader(ds, batch_size=bs, num_workers=8, shuffle=False)
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 criterion = torch.nn.MSELoss()
 
+# Training
 for epoch in range(epochs):
     for batch in dl:
         hidden = torch.zeros((bs, hidden_features), device=device)
@@ -93,7 +93,7 @@ samples = 1
 ds = TSDataSet(features=features, order=order, length=length, samples=samples)
 dl = DataLoader(ds, batch_size=bs, num_workers=8, shuffle=False)
 
-n, m = 1200, length
+n, m = length//2, length
 with torch.no_grad():
     predictions = torch.zeros((samples, m, features))
     truth = torch.zeros((samples, m, features))
