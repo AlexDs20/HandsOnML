@@ -14,7 +14,7 @@ class RecurrentNeuron(nn.Module):
         self.i2o = nn.Linear(in_features, out_features)
         self.h2o = nn.Linear(hidden_features, out_features)
 
-    def forward(self, x, hidden):
+    def forward(self, x):
         new_hidden = self.i2h(x) + self.h2h(hidden)
         out = self.i2o(x) + self.h2o(hidden)
         return out, new_hidden
@@ -26,7 +26,7 @@ class LinearModel(nn.Module):
         self.i2o = nn.Linear(in_features, out_features)
 
     def forward(self, x):
-        out = self.i2o(x)
+        out = self.i2o(x.squeeze())
         return out
 
 
@@ -75,9 +75,9 @@ def plot_batch(batch):
 #------------------------------
 epochs = 15
 bs = 512
-features = 3
+features = 1
 length = 200
-order = 10
+order = 20
 samples = 20*bs
 hidden_features = 128
 out_features = features
@@ -88,7 +88,8 @@ lr = 1e-3
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 #model = RecurrentNeuron(in_features=features, hidden_features=hidden_features, out_features=features).to(device)
-model = RNN(features, hidden_features, num_layers, out_features).to(device)
+#model = RNN(features, hidden_features, num_layers, out_features).to(device)
+model = LinearModel(length-1, out_features).to(device)
 
 ds = TSDataSet(features=features, order=order, length=length, samples=samples)
 dl = DataLoader(ds, batch_size=bs, num_workers=8, shuffle=False)
