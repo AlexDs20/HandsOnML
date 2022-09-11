@@ -15,9 +15,11 @@ class RecurrentNeuron(nn.Module):
         self.h2o = nn.Linear(hidden_features, out_features)
 
     def forward(self, x):
-        new_hidden = self.i2h(x) + self.h2h(hidden)
-        out = self.i2o(x) + self.h2o(hidden)
-        return out, new_hidden
+        hidden = torch.zeros(x.shape[0], self.hidden_features).to(x.device)
+        for i in range(x.shape[1]):
+            out = self.i2o(x[:, i, :]) + self.h2o(hidden)
+            hidden = self.i2h(x[:, i, :]) + self.h2h(hidden)
+        return out
 
 
 class LinearModel(nn.Module):
@@ -87,9 +89,9 @@ lr = 1e-3
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-#model = RecurrentNeuron(in_features=features, hidden_features=hidden_features, out_features=features).to(device)
+model = RecurrentNeuron(in_features=features, hidden_features=hidden_features, out_features=features).to(device)
 #model = RNN(features, hidden_features, num_layers, out_features).to(device)
-model = LinearModel(length-1, out_features).to(device)
+#model = LinearModel(length-1, out_features).to(device)
 
 ds = TSDataSet(features=features, order=order, length=length, samples=samples)
 dl = DataLoader(ds, batch_size=bs, num_workers=8, shuffle=False)
