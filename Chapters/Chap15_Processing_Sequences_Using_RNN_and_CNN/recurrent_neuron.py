@@ -15,9 +15,19 @@ class RecurrentNeuron(nn.Module):
         self.h2o = nn.Linear(hidden_features, out_features)
 
     def forward(self, x, hidden):
-        new_hidden = torch.sigmoid(self.i2h(x) + self.h2h(hidden))
-        out = x + torch.sigmoid(self.i2o(x) + self.h2o(hidden))
+        new_hidden = self.i2h(x) + self.h2h(hidden)
+        out = self.i2o(x) + self.h2o(hidden)
         return out, new_hidden
+
+
+class LinearModel(nn.Module):
+    def __init__(self, in_features, out_features, *args, **kwargs):
+        super(LinearModel, self).__init__(*args, **kwargs)
+        self.i2o = nn.Linear(in_features, out_features)
+
+    def forward(self, x):
+        out = self.i2o(x)
+        return out
 
 
 class TSDataSet(Dataset):
@@ -41,6 +51,19 @@ class TSDataSet(Dataset):
         out = torch.transpose(out.sum(dim=0), 0, 1)
         return out
 
+
+class RNN(nn.Module):
+    def __init__(self, in_features, hidden_features, num_layers, out_features, *args, **kwargs):
+        super(RNN, self).__init__(*args, **kwargs)
+        self.rnn = nn.RNN(in_features, hidden_features, num_layers, batch_first=True)
+        self.linear = nn.Linear(hidden_features, out_features)
+
+    def forward(self, x):
+        out, _ = self.rnn(x)
+        out = out[:, -1, :]
+        out = self.linear(out)
+        return out
+
 def plot_batch(batch):
     batch = batch.cpu().numpy()
     for b in batch:
@@ -49,18 +72,23 @@ def plot_batch(batch):
             plt.plot(feature)
 
 
+#------------------------------
 epochs = 15
-bs = 64
-features = 1
-length = 3000
-order = 5
-samples = 320
+bs = 512
+features = 3
+length = 200
+order = 10
+samples = 20*bs
 hidden_features = 128
+out_features = features
+num_layers = 3
 lr = 1e-3
+#------------------------------
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-model = RecurrentNeuron(in_features=features, hidden_features=hidden_features, out_features=features).to(device)
+#model = RecurrentNeuron(in_features=features, hidden_features=hidden_features, out_features=features).to(device)
+model = RNN(features, hidden_features, num_layers, out_features).to(device)
 
 ds = TSDataSet(features=features, order=order, length=length, samples=samples)
 dl = DataLoader(ds, batch_size=bs, num_workers=8, shuffle=False)
@@ -70,46 +98,41 @@ criterion = torch.nn.MSELoss()
 
 # Training
 for epoch in range(epochs):
-    for batch in dl:
-        hidden = torch.zeros((bs, hidden_features), device=device)
-        batch = batch.to(device)
-        loss = 0
-        optimizer.zero_grad()
+    if epoch+1 % 2 == 0:
+        for g in optimizer.param_groups:
+            g['lr'] /= 2
 
-        for t in range(batch.shape[1]-1):
-            data = batch[:, t, :]
-            target = batch[:, t+1, :]
-            out, hidden = model(data, hidden)
-            l = criterion(out, target)
-            loss = loss + l
+    for batch in dl:
+        batch = batch.to(device)
+        data = batch[:, :-1, :]
+        target = batch[:, -1, :]
+
+        out = model(data)
+        loss = criterion(out, target)
+
+        optimizer.zero_grad()
         loss.backward()
         optimizer.step()
         print(epoch, loss.item())
 
 
-# Testing the model
+# Testing and visualise the model
 bs = 1
 samples = 1
 ds = TSDataSet(features=features, order=order, length=length, samples=samples)
 dl = DataLoader(ds, batch_size=bs, num_workers=8, shuffle=False)
 
-n, m = length//2, length
 with torch.no_grad():
-    predictions = torch.zeros((samples, m, features))
-    truth = torch.zeros((samples, m, features))
+    predictions = torch.zeros((samples, length, features))
+    truth = torch.zeros((samples, length, features))
     for batch in dl:
         batch = batch.to(device)
-        predictions[:bs, :n, :] = batch[:, :n, :]
-        truth[:bs,] = batch[:,]
+        predictions[:bs, :-1, :] = batch[:, :-1, :]
+        truth[:bs] = batch
 
-        hidden = torch.zeros((bs, hidden_features), device=device)
-        for t in range(n):    # I run the first n elements through the model to get the hidden state
-            data = batch[:, t, :]
-            out, hidden = model(data, hidden)
+        out = model(batch[:, :-1, :])
+        predictions[:bs, -1, :] = out
 
-        for t in range(n, m):
-            out, hidden = model(out, hidden)
-            predictions[:bs, t, :] = out
 
 fig, ax = plt.subplots()
 plot_batch(truth)
