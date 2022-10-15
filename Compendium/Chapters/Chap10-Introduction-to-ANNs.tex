@@ -2,9 +2,47 @@
 \section{Introduction to ANNs with Keras}
 
 \subsection{Perceptron}
-Take as many weights as inputs, sum them and send them through step function $$\arrow$$ 0 or 1 (Heaviside step function).
+Take as many weights as inputs, sum them and send them through Heaviside step function (\arrow 0 or 1).
+
 \begin{equation}
-    h_\mathbf{w}\(\mathbf{x}) = \mathrm{step}(\mathbf{x}^T\mathbf{w})
+    h_\mathbf{w}(\mathbf{x}) = \mathrm{\theta}(\mathbf{x}^T\mathbf{w})
 \end{equation}
+
+The weights can be updated using:
+
+\begin{equation}
+    w_{i,j}^{t+1} = w_{i,j}^t + \eta \left(y_j - \hat{y}_j\right) x_i
+\end{equation}
+
+\begin{itemize}
+    \item Backpropagation training algorithm: 1986, David Rumelhard Geoffrey Hinton and Ronald Williams
+\end{itemize}
+
+Other activatin function than Heaviside (prob. because $\partial \theta= 0$):
+
+\begin{itemize}
+    \item Sigmoid:
+        \[
+            \sigma (z) = \frac{1}{1+\exp(-z)}
+        \]
+    \item tanh
+    \item ReLU:
+        \[
+            \mathrm{ReLU}(z) = \max(0, z)
+        \]
+    \item Softplus (smooth varient of ReLU):
+        \[
+            \mathrm{softplus}(z) = \log(1+\exp(z))
+        \]
+\end{itemize}
+
+\subsection{Classification}
+\begin{itemize}
+    \item Binary Classifier:
+        Loss: sigmoid
+    \item Multiclass:
+        Loss: softmax
+\end{itemize}
+
 
 

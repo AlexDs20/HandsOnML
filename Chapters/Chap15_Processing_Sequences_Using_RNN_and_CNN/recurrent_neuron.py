@@ -19,7 +19,7 @@ class RecurrentNeuron(nn.Module):
         for i in range(x.shape[1]):
             out = self.i2o(x[:, i, :]) + self.h2o(hidden)
             hidden = self.i2h(x[:, i, :]) + self.h2h(hidden)
-        return out
+        return x[:,-1,:]+out
 
 
 class LinearModel(nn.Module):
