@@ -75,8 +75,7 @@ class WordDataSet(Dataset):
 
     def __getitem__(self, idx):
         one_hot = F.one_hot(torch.tensor(self.text[idx:idx+self.window_length+1]), num_classes = self.word_index)
-        one_hot = one_hot.type(torch.float)
-        return one_hot[:-1], one_hot[-1]
+        return one_hot[:-1].type(torch.float), one_hot[-1]
 
 
 class Model(nn.Module):
@@ -91,6 +90,33 @@ class Model(nn.Module):
         output, hn = self.gru(x, self.h0)
         out = self.linear(output)
         return out
+
+
+def train(model, train_dataloader, epochs, criterion, optimizer, valid_dataloader=None):
+    for epoch in range(epochs):
+        for i, (x, y) in enumerate(train_dataloader):
+            # forward
+            logits = model(x)
+            loss = criterion(logits, y)
+
+            # Reset grads to 0
+            optimizer.zero_grad()
+
+            # backward
+            loss.backward()
+            optimizer.step()
+
+            if (i+1) % 100 == 0:
+                print(f'epoch {epoch+1} / {epochs}, step {i+1}/{len(train_dataloader)}, loss = {loss.item():.4f}')
+
+        if valid_data_loader is not None:
+            with torch.no_grad():
+                for i, (x, y) in enumerate(valid_dataloader):
+                    # forward
+                    logits = model(x)
+                    loss = criterion(logits, y)
+                    if (i+1) % 100 == 0:
+                        print(f'epoch {epoch+1} / {epochs}, step {i+1}/{len(valid_dataloader)}, loss = {loss.item():.4f}')
 
 
 if __name__ == '__main__':
@@ -116,3 +142,9 @@ if __name__ == '__main__':
     x, y = next(iter(train_dl))
     out = model(x)
     print(out.shape)
+
+    criterion = nn.CrossEntropyLoss()
+    learning_rate = 0.001
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
+    train(model, train_dl, 5, criterion, optimizer)
