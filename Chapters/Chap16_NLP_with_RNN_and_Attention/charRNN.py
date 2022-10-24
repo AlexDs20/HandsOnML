@@ -10,6 +10,8 @@ from pprint import pprint as pp
 
 
 FILENAME = 'shakespeare.txt'
+DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+BS = 256
 
 def download_shakespeare():
     import requests
@@ -81,13 +83,14 @@ class WordDataSet(Dataset):
 class Model(nn.Module):
     def __init__(self):
         super().__init__()
-        self.gru = nn.GRU(39, 128, dropout=0.2, batch_first=True, num_layers=2)
-        self.h0 = torch.zeros(2, 32, 128)
-
-        self.linear = nn.Linear(128, 39)
+        self.hidden_size = 128
+        self.num_layers = 3
+        self.gru = nn.GRU(39, self.hidden_size, dropout=0.2, batch_first=True, num_layers=self.num_layers)
+        self.linear = nn.Linear(self.hidden_size, 39)
 
     def forward(self, x):
-        output, hn = self.gru(x, self.h0)
+        h0 = torch.zeros(self.num_layers, BS, self.hidden_size, device=DEVICE)
+        output, hn = self.gru(x, h0)
         out = self.linear(output)
         return out
 
@@ -95,9 +98,13 @@ class Model(nn.Module):
 def train(model, train_dataloader, epochs, criterion, optimizer, valid_dataloader=None):
     for epoch in range(epochs):
         for i, (x, y) in enumerate(train_dataloader):
+            if x.shape[0] != BS:
+                continue
+            x, y = x.to(DEVICE), y.to(DEVICE)
             # forward
             logits = model(x)
-            loss = criterion(logits, y)
+            logits = logits[:, -1, :]
+            loss = criterion(logits, y.argmax(dim=1))
 
             # Reset grads to 0
             optimizer.zero_grad()
@@ -107,16 +114,24 @@ def train(model, train_dataloader, epochs, criterion, optimizer, valid_dataloade
             optimizer.step()
 
             if (i+1) % 100 == 0:
-                print(f'epoch {epoch+1} / {epochs}, step {i+1}/{len(train_dataloader)}, loss = {loss.item():.4f}')
+                correct = torch.sum(torch.argmax(logits, dim=1) == y.argmax(dim=1))
+                print(f'epoch {epoch+1} / {epochs}, step {i+1}/{len(train_dataloader)}, loss = {loss.item():.4f}, acc = {correct/BS}')
 
+        torch.save({'model_state_dict': model.state_dict()}, f'checkpoints/epoch_{epoch}_loss_{loss}.ckpt')
         if valid_data_loader is not None:
             with torch.no_grad():
+                model = model.eval()
                 for i, (x, y) in enumerate(valid_dataloader):
+                    if x.shape[0] != BS:
+                        continue
+                    x, y = x.to(DEVICE), y.to(DEVICE)
                     # forward
                     logits = model(x)
                     loss = criterion(logits, y)
                     if (i+1) % 100 == 0:
-                        print(f'epoch {epoch+1} / {epochs}, step {i+1}/{len(valid_dataloader)}, loss = {loss.item():.4f}')
+                        correct = torch.sum(torch.argmax(logits, dim=1) == y.argmax(dim=1))
+                        print(f'epoch {epoch+1} / {epochs}, step {i+1}/{len(valid_dataloader)}, loss = {loss.item():.4f}, acc = {correct/BS}')
+            model = model.train()
 
 
 if __name__ == '__main__':
@@ -132,19 +147,21 @@ if __name__ == '__main__':
     [encoded] = np.array(tokenizer.texts_to_sequences([text]))
 
     train_size = len(encoded) * 90 // 100
+    valid_size = len(encoded) * 5 // 100
     n_steps = 100
 
-    train_data = encoded[:train_size*len(encoded)]
+    train_data = encoded[:train_size]
     train_ds = WordDataSet(train_data, n_steps, word_index = len(tokenizer.word_index))
-    train_dl = DataLoader(train_ds, batch_size=32, shuffle=True)
+    train_dl = DataLoader(train_ds, batch_size=BS, shuffle=True)
 
-    model = Model()
-    x, y = next(iter(train_dl))
-    out = model(x)
-    print(out.shape)
+    valid_data = encoded[train_size : train_size + valid_size]
+    valid_ds = WordDataSet(valid_data, n_steps, word_index = len(tokenizer.word_index))
+    valid_dl = DataLoader(valid_ds, batch_size=BS, shuffle=True)
+
+    model = Model().to(DEVICE)
 
     criterion = nn.CrossEntropyLoss()
-    learning_rate = 0.001
+    learning_rate = 0.0001
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
-    train(model, train_dl, 5, criterion, optimizer)
+    train(model, train_dl, 5, criterion, optimizer, valid_dl)
