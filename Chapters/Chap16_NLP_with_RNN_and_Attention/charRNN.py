@@ -1,5 +1,6 @@
 from typing import List
 import numpy as np
+from torch.utils.data import Dataset, DataLoader
 from pprint import pprint as pp
 
 
@@ -27,10 +28,11 @@ def unique_char(text, lower=True):
 
 class Tokenize():
     def __init__(self, text, lower=True):
-        self.unique = unique_char(text, lower=lower)
+        self.word_index = unique_char(text, lower=lower)
         self.lower = lower
-        self.t2s = {c: i for i, c in enumerate(self.unique)}    # text 2 seq
-        self.s2t = {i: c for i, c in enumerate(self.unique)}    # seq 2 text
+        self.t2s = {c: i for i, c in enumerate(self.word_index)}    # text 2 seq
+        self.s2t = {i: c for i, c in enumerate(self.word_index)}    # seq 2 text
+        self.document_count = len(text)
 
     def _lower(self, text: str):
         if self.lower:
@@ -56,6 +58,19 @@ class Tokenize():
         return output
 
 
+class WordDataSet(Dataset):
+    def __init__(self, text, window_length):
+        super().__init__()
+        self.text = text
+        self.window_length = window_length
+
+    def __len__(self):
+        return len(self.text) - self.window_length - 1
+
+    def __getitem__(self, idx):
+        return self.text[idx:idx+self.window_length], self.text[idx+self.window_length]
+
+
 
 if __name__ == '__main__':
     #download_shakespeare()
@@ -68,4 +83,15 @@ if __name__ == '__main__':
     pp(tokenizer.sequences_to_texts([[18, 21, 30, 31, 32], [35, 27, 30, 16]]))
 
     [encoded] = np.array(tokenizer.texts_to_sequences([text]))
-    print(encoded.shape)
+
+    train_size = len(encoded) * 90 // 100
+    n_steps = 100
+
+    train_ds = WordDataSet(encoded[:train_size*len(encoded)], n_steps)
+    train_dl = DataLoader(train_ds, batch_size=2, shuffle=True)
+    input, t = next(iter(train_dl))
+    for idx, (input, t) in enumerate(train_dl):
+        print(tokenizer.sequences_to_texts([input[0,:].numpy()]))
+        print(tokenizer.sequences_to_texts([[t[0].numpy().tolist()]]))
+        if idx==5:
+            break
