@@ -1,6 +1,11 @@
 from typing import List
 import numpy as np
+
+import torch
+import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
+import torch.nn.functional as F
+
 from pprint import pprint as pp
 
 
@@ -59,17 +64,33 @@ class Tokenize():
 
 
 class WordDataSet(Dataset):
-    def __init__(self, text, window_length):
+    def __init__(self, text, window_length, word_index):
         super().__init__()
         self.text = text
         self.window_length = window_length
+        self.word_index = word_index
 
     def __len__(self):
         return len(self.text) - self.window_length - 1
 
     def __getitem__(self, idx):
-        return self.text[idx:idx+self.window_length], self.text[idx+self.window_length]
+        one_hot = F.one_hot(torch.tensor(self.text[idx:idx+self.window_length+1]), num_classes = self.word_index)
+        one_hot = one_hot.type(torch.float)
+        return one_hot[:-1], one_hot[-1]
 
+
+class Model(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.gru = nn.GRU(39, 128, dropout=0.2, batch_first=True, num_layers=2)
+        self.h0 = torch.zeros(2, 32, 128)
+
+        self.linear = nn.Linear(128, 39)
+
+    def forward(self, x):
+        output, hn = self.gru(x, self.h0)
+        out = self.linear(output)
+        return out
 
 
 if __name__ == '__main__':
@@ -87,11 +108,11 @@ if __name__ == '__main__':
     train_size = len(encoded) * 90 // 100
     n_steps = 100
 
-    train_ds = WordDataSet(encoded[:train_size*len(encoded)], n_steps)
-    train_dl = DataLoader(train_ds, batch_size=2, shuffle=True)
-    input, t = next(iter(train_dl))
-    for idx, (input, t) in enumerate(train_dl):
-        print(tokenizer.sequences_to_texts([input[0,:].numpy()]))
-        print(tokenizer.sequences_to_texts([[t[0].numpy().tolist()]]))
-        if idx==5:
-            break
+    train_data = encoded[:train_size*len(encoded)]
+    train_ds = WordDataSet(train_data, n_steps, word_index = len(tokenizer.word_index))
+    train_dl = DataLoader(train_ds, batch_size=32, shuffle=True)
+
+    model = Model()
+    x, y = next(iter(train_dl))
+    out = model(x)
+    print(out.shape)
