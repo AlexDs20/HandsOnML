@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 import torch.nn.functional as F
+from torch.distributions.categorical import Categorical
 
 from pprint import pprint as pp
 
@@ -89,7 +90,7 @@ class Model(nn.Module):
         self.linear = nn.Linear(self.hidden_size, 39)
 
     def forward(self, x):
-        h0 = torch.zeros(self.num_layers, BS, self.hidden_size, device=DEVICE)
+        h0 = torch.zeros(self.num_layers, x.shape[0], self.hidden_size, device=DEVICE)
         output, hn = self.gru(x, h0)
         out = self.linear(output)
         return out
@@ -135,7 +136,32 @@ def train(model, train_dataloader, epochs, criterion, optimizer, valid_dataloade
             model = model.train()
 
 
+def preprocess(texts, tokenizer):
+    X = tokenizer.texts_to_sequences(texts)
+    one_hot = F.one_hot(torch.tensor(X, device=DEVICE), num_classes=len(tokenizer.word_index)).type(torch.float)
+    return one_hot
+
+
+def next_char(text, model, tokenizer, temp=1):
+    X_new = preprocess([text], tokenizer)
+    y_proba = model(X_new).softmax(dim=-1)[0, -1:, :]
+    y_proba = y_proba.log() / temp
+    s = y_proba.argmax(dim=-1)
+    #m = Categorical(logits=y_proba)
+    #s = m.sample()
+    return tokenizer.sequences_to_texts([s.cpu().numpy().tolist()])[0]
+
+
+def complete_text(text, model, tokenizer, n_chars=50):
+    for _ in range(n_chars):
+        text += next_char(text, model, tokenizer)
+    return text
+
+
 if __name__ == '__main__':
+    #------------------------------------
+    # Work with the data
+    #------------------------------------
     #download_shakespeare()
 
     text = read_shakespeare()
@@ -147,22 +173,54 @@ if __name__ == '__main__':
 
     [encoded] = np.array(tokenizer.texts_to_sequences([text]))
 
-    train_size = len(encoded) * 90 // 100
-    valid_size = len(encoded) * 5 // 100
-    n_steps = 100
+    #------------------------------------
+    # Training Datasets
+    #------------------------------------
+    if 0:
+        train_size = len(encoded) * 90 // 100
+        valid_size = len(encoded) * 5 // 100
+        n_steps = 100
 
-    train_data = encoded[:train_size]
-    train_ds = WordDataSet(train_data, n_steps, word_index = len(tokenizer.word_index))
-    train_dl = DataLoader(train_ds, batch_size=BS, shuffle=True)
+        train_data = encoded[:train_size]
+        train_ds = WordDataSet(train_data, n_steps, word_index = len(tokenizer.word_index))
+        train_dl = DataLoader(train_ds, batch_size=BS, shuffle=True)
 
-    valid_data = encoded[train_size : train_size + valid_size]
-    valid_ds = WordDataSet(valid_data, n_steps, word_index = len(tokenizer.word_index))
-    valid_dl = DataLoader(valid_ds, batch_size=BS, shuffle=True)
+        valid_data = encoded[train_size : train_size + valid_size]
+        valid_ds = WordDataSet(valid_data, n_steps, word_index = len(tokenizer.word_index))
+        valid_dl = DataLoader(valid_ds, batch_size=BS, shuffle=False)
 
+    #------------------------------------
+    # Create the model and train
+    #------------------------------------
     model = Model().to(DEVICE)
 
-    criterion = nn.CrossEntropyLoss()
-    learning_rate = 0.0001
-    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+    if 0:
+        learning_rate = 0.0001
+        epochs = 5
 
-    train(model, train_dl, 5, criterion, optimizer, valid_dl)
+        criterion = nn.CrossEntropyLoss()
+        optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
+        train(model, train_dl, epochs, criterion, optimizer, valid_dl)
+
+    else:
+        checkpoint = 'checkpoints/content/checkpoints/epoch_32_loss_1.4621447324752808.ckpt'
+
+        ckpt = torch.load(checkpoint)['model_state_dict']
+        model.load_state_dict(ckpt)
+
+    #------------------------------------
+    # Use the model to predict
+    #------------------------------------
+
+    # Simple example
+    TEXT = ['Are you g']
+
+    X_new = preprocess(TEXT, tokenizer)
+    y_pred = model(X_new)[:,-1,:].argmax(dim=-1).cpu().numpy().tolist()
+    pred_letter = tokenizer.sequences_to_texts([y_pred])
+    print(f'Input: {TEXT}, next letter: {pred_letter}')
+
+    # More text
+    n = complete_text(TEXT[0], model, tokenizer, n_chars=200)
+    print(n)
