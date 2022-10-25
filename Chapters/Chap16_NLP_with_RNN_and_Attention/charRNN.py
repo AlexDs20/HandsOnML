@@ -114,11 +114,11 @@ def train(model, train_dataloader, epochs, criterion, optimizer, valid_dataloade
             optimizer.step()
 
             if (i+1) % 100 == 0:
-                correct = torch.sum(torch.argmax(logits, dim=1) == y.argmax(dim=1))
+                correct = torch.sum(logits.argmax(dim=1) == y.argmax(dim=1))
                 print(f'epoch {epoch+1} / {epochs}, step {i+1}/{len(train_dataloader)}, loss = {loss.item():.4f}, acc = {correct/BS}')
 
         torch.save({'model_state_dict': model.state_dict()}, f'checkpoints/epoch_{epoch}_loss_{loss}.ckpt')
-        if valid_data_loader is not None:
+        if valid_dataloader is not None:
             with torch.no_grad():
                 model = model.eval()
                 for i, (x, y) in enumerate(valid_dataloader):
@@ -127,9 +127,10 @@ def train(model, train_dataloader, epochs, criterion, optimizer, valid_dataloade
                     x, y = x.to(DEVICE), y.to(DEVICE)
                     # forward
                     logits = model(x)
-                    loss = criterion(logits, y)
+                    logits = logits[:, -1, :]
+                    loss = criterion(logits, y.argmax(dim=1))
                     if (i+1) % 100 == 0:
-                        correct = torch.sum(torch.argmax(logits, dim=1) == y.argmax(dim=1))
+                        correct = torch.sum(logits.argmax(dim=1) == y.argmax(dim=1))
                         print(f'epoch {epoch+1} / {epochs}, step {i+1}/{len(valid_dataloader)}, loss = {loss.item():.4f}, acc = {correct/BS}')
             model = model.train()
 
