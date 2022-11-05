@@ -15,13 +15,13 @@ class MultiHeadAttention(nn.Module):
         assert d_model % dk == 0
         assert d_model % dv == 0
 
-        self.WQ = nn.Linear(d_model, heads * dk)
-        self.WK = nn.Linear(d_model, heads * dk)
-        self.WV = nn.Linear(d_model, heads * dv)
+        self.WQ = nn.Linear(d_model, heads * dk, bias = False)
+        self.WK = nn.Linear(d_model, heads * dk, bias = False)
+        self.WV = nn.Linear(d_model, heads * dv, bias = False)
 
         self.WO = nn.Linear(heads * dv, d_model)
 
-    def forward(self, Q, K, V):
+    def forward(self, Q, K, V, mask=None):
         N = Q.shape[0]
         vl, kl, ql = V.shape[1], K.shape[1], Q.shape[1]
 
@@ -41,3 +41,29 @@ class MultiHeadAttention(nn.Module):
         attention = torch.einsum('nhqk,nkhv->nqhv', weights, V).reshape(
             N, ql, self.heads * self.dv
         )
+
+        out = self.WO(attention)
+        return out
+
+
+class TransformerBlock(nn.Module):
+    def __init__(self, d_model, heads, dropout, d_ff):
+        self.attention = MultiHeadAttention(d_model, heads)
+
+        self.norm1 = nn.LayerNorm(d_model)
+        self.norm2 = nn.LayerNorm(d_model)
+
+        self.ff = nn.Sequential(
+            nn.Linear(d_model, d_ff),
+            nn.ReLU(),
+            nn.Linear(d_ff, d_model)
+        )
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, Q, K, V, mask=None):
+        attention = self.attention(Q, K, V, mask)
+
+        x = self.dropout(self.norm1(attention + Q))
+        ff = self.ff(x)
+        out = self.dropout(self.norm2(ff + x))
+        return out
