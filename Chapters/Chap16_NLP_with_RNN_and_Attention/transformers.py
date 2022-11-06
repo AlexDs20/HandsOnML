@@ -13,14 +13,14 @@ class MultiHeadAttention(nn.Module):
         self.heads = heads
         self.mask = mask
 
-        assert d_model % dk == 0
-        assert d_model % dv == 0
+        assert d_model % self.dk == 0
+        assert d_model % self.dv == 0
 
-        self.WQ = nn.Linear(d_model, heads * dk, bias = False)
-        self.WK = nn.Linear(d_model, heads * dk, bias = False)
-        self.WV = nn.Linear(d_model, heads * dv, bias = False)
+        self.WQ = nn.Linear(self.d_model, self.heads * self.dk, bias = False)
+        self.WK = nn.Linear(self.d_model, self.heads * self.dk, bias = False)
+        self.WV = nn.Linear(self.d_model, self.heads * self.dv, bias = False)
 
-        self.WO = nn.Linear(heads * dv, d_model)
+        self.WO = nn.Linear(self.heads * self.dv, self.d_model)
 
     def forward(self, Q, K, V):
         N = Q.shape[0]
@@ -33,7 +33,7 @@ class MultiHeadAttention(nn.Module):
         V = self.WV(V).reshape(N, vl, self.heads, self.dv)
 
         # Do QK^T  -> [N, self.heads, ql, kl]
-        compat = torch.einsum('nqhk,nlhk->nhql', Q, K) / torch.sqrt(self.dk)
+        compat = torch.einsum('nqhk,nlhk->nhql', Q, K) / self.dk**(1/2)
 
         # Masking when doing QQT in decoder
         if self.mask is not None:    # mask upper right triangle, not diagonal
@@ -79,12 +79,13 @@ class EncoderBlock(nn.Module):
 
 class PositionEmbedding(nn.Module):
     def __init__(self, max_length, d_model):
-        if max_length % 2 == 1 max_length += 1  # must be even
-        p, i = torch.meshgrid(torch.arange(max_length // 2), torch.arange(d_model), indexing='ij')
+        super(PositionEmbedding, self).__init__()
+        if max_length % 2 == 1: max_length += 1  # must be even
+        p, i = torch.meshgrid(torch.arange(max_length), torch.arange(d_model // 2), indexing='ij')
 
         P = torch.empty(1, max_length, d_model)
-        P[0, :, ::2] = torch.sin(p / 10000**(2 * i / max_length)).mT
-        P[0, :, 1::2] = torch.cos(p / 10000**(2 * i / max_length)).mT
+        P[0, :, ::2] = torch.sin(p / 10000**(2 * i / max_length))
+        P[0, :, 1::2] = torch.cos(p / 10000**(2 * i / max_length))
 
         self.P = P
 
@@ -95,13 +96,13 @@ class PositionEmbedding(nn.Module):
 
 class Transformer(nn.Module):
     def __init__(self,
-                 d_model,
-                 dropout,
-                 en_vocab,
-                 en_layers,
-                 en_heads,
-                 en_d_ff,
-                 en_max_length):
+                 d_model=512,
+                 dropout=0.1,
+                 en_vocab=1000,
+                 en_layers=6,
+                 en_heads=8,
+                 en_d_ff=512*4,
+                 en_max_length=100):
         super(Transformer, self).__init__()
 
         self.en_embedding = nn.Embedding(en_vocab, d_model)
@@ -116,8 +117,29 @@ class Transformer(nn.Module):
         )
 
     def forward(self, x):
+        # Encoder part
         x = self.en_embedding(x)
         x = x + self.en_pos_embedding(x)
 
         for encoder_layer in self.encoder:
             x = encoder_layer(x)
+
+        return x
+        # Decoder part
+
+
+if __name__ == '__main__':
+    # Test positional Embedding
+    input = torch.randint(10, (4, 20))
+    pe = PositionEmbedding(30, 100)
+    print(pe(input).shape)
+
+    # Test Encoder block
+    input = torch.rand((4, 20, 512))
+    eb = EncoderBlock()
+    print(eb(input).shape)
+
+    # Test transformer
+    input = torch.randint(10, (4, 20))
+    tf = Transformer()
+    print(tf(input).shape)
