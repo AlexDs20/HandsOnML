@@ -11,7 +11,8 @@ class Model(nn.Module):
         super(Model, self).__init__()
 
         self.pos_embedding = PositionEmbedding(max_length, model_dim)
-        self.embedding = nn.Linear(dim, model_dim)
+        #self.embedding = nn.Linear(dim, model_dim)
+        self.embedding = nn.Conv1d(dim, model_dim, kernel_size=1)
         self.dropout = nn.Dropout(dropout)
         self.activation = nn.ReLU()
 
@@ -27,7 +28,9 @@ class Model(nn.Module):
         self.out = nn.Linear(model_dim, n_classes)
 
     def forward(self, x):
-        x = self.embedding(x)
+        # If run conv1d -> input need shape (N, C, L) and not (N, L, C) as it currently is -> transpose
+        x = self.embedding(x.transpose(-2, -1)).transpose(-2, -1)
+        #x = self.embedding(x)
         x = self.dropout(x + self.pos_embedding(x))
         for encoder_layer in self.encoder:
             x = encoder_layer(x)
@@ -105,7 +108,7 @@ if __name__ == '__main__':
     heads = 8
     d_ff = 256
 
-    train_ds, test_ds = get_mnist(data_folder, download=False)
+    train_ds, test_ds = get_mnist(data_folder, download=True)
     train_dl = DataLoader(train_ds, batch_size=batch_size, num_workers=num_workers)
     test_dl = DataLoader(test_ds, batch_size=batch_size, num_workers=num_workers)
 
