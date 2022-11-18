@@ -108,7 +108,7 @@ if __name__ == '__main__':
     heads = 8
     d_ff = 256
 
-    train_ds, test_ds = get_mnist(data_folder, download=True)
+    train_ds, test_ds = get_mnist(data_folder, download=False)
     train_dl = DataLoader(train_ds, batch_size=batch_size, num_workers=num_workers)
     test_dl = DataLoader(test_ds, batch_size=batch_size, num_workers=num_workers)
 
