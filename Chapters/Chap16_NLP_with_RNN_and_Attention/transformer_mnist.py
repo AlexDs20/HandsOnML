@@ -91,7 +91,7 @@ def train(model, train_dl, test_dl, max_epochs, learning_rate, device='cpu'):
 
 if __name__ == '__main__':
     data_folder = './data/'
-    device = 'cpu'
+    device = 'cuda'
     batch_size = 512
     num_workers = 8
     max_epochs = 20
@@ -119,4 +119,4 @@ if __name__ == '__main__':
     # Test sending data through model shape: [N,T,C]
     model(next(iter(test_dl))[0].squeeze())
 
-    trained_model = train(model, train_dl, test_dl, max_epochs, learning_rate)
+    trained_model = train(model, train_dl, test_dl, max_epochs, learning_rate, device=device)

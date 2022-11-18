@@ -118,7 +118,7 @@ class PositionEmbedding(nn.Module):
 
     def forward(self, x):
         shape = x.shape
-        return self.P[:, :shape[-2], :shape[-1]]
+        return self.P[:, :shape[-2], :shape[-1]].to(x.device)
 
 
 class Transformer(nn.Module):
