@@ -6,6 +6,7 @@ import torch.distributions
 import torchvision
 import numpy as np
 import matplotlib.pyplot as plt; plt.rcParams['figure.dpi'] = 200
+from PIL import Image
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -84,6 +85,7 @@ def train(autoencoder, data, epochs=15):
             loss = ((x - x_hat)**2).sum()
             loss.backward()
             opt.step()
+        plot_data(autoencoder, x[:8], epoch=epoch)
     return autoencoder
 
 def plot_latent(autoencoder, data, num_batches=50):
@@ -114,6 +116,52 @@ def plot_reconstructed(autoencoder, r0=(-5, 10), r1=(-10, 5), n=12):
     plt.savefig('/mnt/d/tmp/reconstructed.png')
     plt.close()
 
+def plot_data(model, batch, epoch=0):
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots(batch.shape[0], 2, figsize=(20,20))
+
+    model.to(batch.device)
+    predictions = model(batch)
+
+    for i in range(batch.shape[0]):
+        ax[i, 0].imshow(batch[i, 0].squeeze().cpu().detach().numpy())
+        ax[i, 1].imshow(predictions[i, 0].squeeze().cpu().detach().numpy())
+
+    plt.savefig(f'/mnt/d/tmp/predictions_{epoch}.png')
+
+def interpolate(autoencoder, x_1, x_2, n=12):
+    z_1 = autoencoder.encoder(x_1)
+    z_2 = autoencoder.encoder(x_2)
+    z = torch.stack([z_1 + (z_2 - z_1)*t for t in np.linspace(0, 1, n)])
+    interpolate_list = autoencoder.decoder(z)
+    interpolate_list = interpolate_list.to('cpu').detach().numpy()
+
+    w = 28
+    img = np.zeros((w, n*w))
+    for i, x_hat in enumerate(interpolate_list):
+        img[:, i*w:(i+1)*w] = x_hat.reshape(28, 28)
+    plt.imshow(img)
+    plt.xticks([])
+    plt.yticks([])
+
+def interpolate_gif(autoencoder, filename, x_1, x_2, n=100):
+    z_1 = autoencoder.encoder(x_1)
+    z_2 = autoencoder.encoder(x_2)
+
+    z = torch.stack([z_1 + (z_2 - z_1)*t for t in np.linspace(0, 1, n)])
+
+    interpolate_list = autoencoder.decoder(z)
+    interpolate_list = interpolate_list.to('cpu').detach().numpy()*255
+
+    images_list = [Image.fromarray(img.reshape(28, 28)).resize((256, 256)) for img in interpolate_list]
+    images_list = images_list + images_list[::-1] # loop back beginning
+
+    images_list[0].save(
+        f'{filename}.gif',
+        save_all=True,
+        append_images=images_list[1:],
+        loop=1)
+
 latent_dims = 2
 #autoencoder = Autoencoder(latent_dims).to(device) # GPU
 autoencoder = VariationalAutoencoder(latent_dims).to(device)
@@ -128,4 +176,13 @@ data = torch.utils.data.DataLoader(
 autoencoder = train(autoencoder, data)
 
 plot_latent(autoencoder, data)
-plot_reconstructed(autoencoder)
+plot_reconstructed(autoencoder, r0=[-20, 20], r1=[-20, 20])
+
+x, y = next(iter(data))
+x_1 = x[y == 1][1].to(device) # find a 1
+x_2 = x[y == 0][1].to(device) # find a 0
+
+interpolate(autoencoder, x_1, x_2, n=20)
+interpolate_gif(autoencoder, "/mnt/d/tmp/autoencoder", x_1, x_2)
+
+
