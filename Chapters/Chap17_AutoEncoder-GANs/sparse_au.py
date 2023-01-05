@@ -22,8 +22,8 @@ class Model(nn.Module):
             nn.Conv2d(64, 64, kernel_size=3, padding='same'),       # -> 64x7x7
             nn.ReLU(),
             nn.Flatten())
-        self.bottleneck = nn.Linear(64*7*7, 9)
-        self.lin = nn.Linear(9, 7*7)
+        self.bottleneck = nn.Linear(64*7*7, 7*7)
+        self.lin = nn.Linear(7*7, 7*7)
         self.decoder = nn.Sequential(
             nn.Conv2d(1, 64, kernel_size=3, padding='same'),       # -> 64x7x7
             nn.ReLU(),
@@ -39,10 +39,10 @@ class Model(nn.Module):
     def forward(self, x):
         N = x.shape[0]
         x = self.encoder(x)
-        x = self.bottleneck(x)
-        x = self.lin(x)
+        bn = self.bottleneck(x)
+        x = self.lin(bn)
         x = self.decoder(x.view(N,1,7,7))
-        return x
+        return x, bn
 
 
 def get_mnist(folder, download=False):
@@ -58,13 +58,19 @@ def train(model, train_dl, test_dl, max_epochs, learning_rate, device='cpu'):
     optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
     scheduler = lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=1)
 
+    alpha = 0.01
+
     for epoch in range(max_epochs):
         for idx, batch in enumerate(train_dl):
             data, target = batch[0].to(device), batch[1].to(device)
 
-            logits = model(data)
+            logits, bn = model(data)
 
-            loss = criterion(logits, data)
+            l1 = criterion(logits, data)
+            #l_params = torch.cat([x.view(-1) for x in model.bottleneck.parameters()])
+            l_params = bn.flatten()
+            l2 = torch.sum(torch.abs(l_params)) / l_params.numel()
+            loss =  l1 + alpha * l2
 
             optimizer.zero_grad()
 
@@ -73,7 +79,7 @@ def train(model, train_dl, test_dl, max_epochs, learning_rate, device='cpu'):
             optimizer.step()
 
             if idx % 20 == 0:
-                print(f'epoch: {epoch}, batch: {idx}, loss: {loss:.2f}')
+                print(f'epoch: {epoch}, batch: {idx}, loss: {loss:.3f}, MSE: {l1:.5f}, l1: {l2:.5f}')
 
         with torch.no_grad():
             val_loss = 0
@@ -82,30 +88,35 @@ def train(model, train_dl, test_dl, max_epochs, learning_rate, device='cpu'):
                 data, target = batch[0].to(device), batch[1].to(device)
 
                 # Forward pass
-                logits = model(data)
+                logits, bn = model(data)
 
                 # Compute loss
-                l = criterion(logits, data)
+                l1 = criterion(logits, data)
+                #l_params = torch.cat([x.view(-1) for x in model.bottleneck.parameters()])
+                l_params = bn.flatten()
+                l2 = torch.sum(torch.abs(l_params)) / l_params.numel()
+                l = l1 + l2
                 val_loss += l
 
-            plot_data(model, data[:8], epoch=epoch)
+            plot_data(model, data[:8], l_params, bn, epoch=epoch)
             print(f'valid_loss: {val_loss:.2f}')
 
         scheduler.step(val_loss)
     return model
 
 
-def plot_data(model, data, epoch=0):
+def plot_data(model, data, weights, bn, epoch=0):
     import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(data.shape[0], 3)
+    fig, ax = plt.subplots(data.shape[0], 4, figsize=(20,20))
 
     model.to(data.device)
-    predictions = model(data)
+    predictions, _ = model(data)
 
     for i in range(data.shape[0]):
         ax[i, 0].imshow(data[i, 0].squeeze().cpu().detach().numpy())
-        ax[i, 1].imshow(data[i, 0].squeeze().cpu().detach().numpy())
-        ax[i, 2].imshow(predictions[i, 0].squeeze().cpu().detach().numpy())
+        ax[i, 1].plot(weights.flatten().squeeze().cpu().detach().numpy())
+        ax[i, 2].plot(bn[i].flatten().squeeze().cpu().detach().numpy())
+        ax[i, 3].imshow(predictions[i, 0].squeeze().cpu().detach().numpy())
 
     plt.savefig(f'/mnt/d/tmp/predictions_{epoch}.png')
 
@@ -115,8 +126,8 @@ if __name__ == '__main__':
     device = 'cuda'
     batch_size = 256
     num_workers = 8
-    max_epochs = 10
-    learning_rate = 0.001
+    max_epochs = 30
+    learning_rate = 0.0005
     save_model_path = 'mnist_num_workers.ckpt'
 
     train_ds, test_ds = get_mnist(data_folder, download=False)
@@ -131,7 +142,3 @@ if __name__ == '__main__':
     model(next(iter(test_dl))[0])
 
     trained_model = train(model, train_dl, test_dl, max_epochs, learning_rate, device=device)
-
-    #data, _ = next(iter(test_dl))
-    #plot_data(model, data[:8])
-
