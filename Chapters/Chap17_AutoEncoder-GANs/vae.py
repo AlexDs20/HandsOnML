@@ -38,7 +38,7 @@ class VariationalEncoder(nn.Module):
 
         z = mu + sigma * self.N.sample(mu.shape)
 
-        self.kl = (sigma**2 + mu**2 - torch.log(sigma) - 1/2).sum()
+        self.kl = -0.5 * (1 + torch.log(sigma**2) - sigma**2 - mu**2 ).sum()
 
         return z
 
