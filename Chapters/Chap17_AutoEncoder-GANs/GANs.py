@@ -4,6 +4,8 @@ from torch.utils.data import DataLoader
 import torchvision.transforms as TF
 from torchvision.datasets import FashionMNIST
 
+import matplotlib.pyplot as plt
+
 
 class Generator(nn.Module):
     def __init__(self, embed_dims=30, out_shape=(28,28)):
@@ -41,7 +43,8 @@ class Discriminator(nn.Module):
                 nn.SELU(),
                 nn.Linear(150, 100),
                 nn.SELU(),
-                nn.Linear(100, 1)
+                nn.Linear(100, 1),
+                nn.Sigmoid(),
             ]
         )
 
@@ -50,6 +53,64 @@ class Discriminator(nn.Module):
             x = l(x)
 
         return x
+
+
+def train_gan(generator, discriminator, train_dl, test_dl, max_epochs=30, lr=0.001, embed_dims=30, device='cpu'):
+    criterion = torch.nn.BCELoss()
+    D_optimizer = torch.optim.Adam(discriminator.parameters(), lr=lr)
+    G_optimizer = torch.optim.Adam(generator.parameters(), lr=lr)
+
+    for epoch in range(max_epochs):
+        dl = 0
+        gl = 0
+        for i, (x, y) in enumerate(train_dl):
+            # Train the Discriminator
+            x, y = x.to(device), y.to(device)
+            noise = torch.randn((x.shape[0], embed_dims), device=device)
+
+            fake = generator(noise)
+            stacked = torch.concat([x, fake], dim=0)
+
+            pred = discriminator(stacked)
+
+            loss = criterion(pred, torch.concat([torch.ones(x.shape[0], 1, device=device), torch.zeros(x.shape[0], 1, device=device)], dim=0) )
+
+            G_optimizer.zero_grad()
+            D_optimizer.zero_grad()
+            loss.backward()
+            D_optimizer.step()
+
+            dl += loss
+
+            # Train the Generator
+            noise = torch.randn((x.shape[0], embed_dims), device=device)
+            fake = generator(noise)
+            pred = discriminator(fake)
+            loss = criterion(pred, torch.ones(x.shape[0], 1, device=device))
+
+            D_optimizer.zero_grad()
+            G_optimizer.zero_grad()
+            loss.backward()
+            G_optimizer.step()
+
+            gl += loss
+
+        print(f'{epoch}: {dl.item()/(i+1):.4f}, {gl.item()/(i+1):.4f}')
+
+        save_image(fake, epoch)
+
+    return generator, discriminator
+
+
+def save_image(data, epoch, N=8):
+    fig, ax = plt.subplots(N, 1)
+
+    for i in range(N):
+        ax[i].imshow(data[i,0].cpu().detach().numpy())
+
+    plt.savefig(f'generated/{epoch}.png')
+    plt.close()
+
 
 
 def get_dataset(folder='./data/', download=False):
@@ -63,16 +124,20 @@ def get_dataset(folder='./data/', download=False):
 def main():
     batch_size = 256
     num_workers = 8
+    max_epochs = 1000
+    embed_dims = 40
+    device = 'cuda'
 
+    device = torch.device(device if torch.cuda.is_available() else 'cpu')
     train_ds, test_ds = get_dataset(download=False)
 
-    train_dl = DataLoader(train_ds, batch_size=batch_size, num_workers=num_workers)
-    test_dl = DataLoader(test_ds, batch_size=batch_size, num_workers=num_workers)
+    train_dl = DataLoader(train_ds, batch_size=batch_size, num_workers=num_workers, shuffle=True)
+    test_dl = DataLoader(test_ds, batch_size=batch_size, num_workers=num_workers, shuffle=True)
 
-    gen_model = Generator()
-    disc_model = Discriminator()
+    gen_model = Generator(embed_dims).to(device)
+    disc_model = Discriminator().to(device)
 
-    #train_gan(gen_model, disc_model, train_dl, test_dl)
+    train_gan(gen_model, disc_model, train_dl, test_dl, max_epochs=max_epochs, embed_dims=embed_dims, device=device)
 
 if __name__ == '__main__':
     main()
