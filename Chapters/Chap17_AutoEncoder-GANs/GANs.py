@@ -57,8 +57,8 @@ class Discriminator(nn.Module):
 
 def train_gan(generator, discriminator, train_dl, test_dl, max_epochs=30, lr=0.001, embed_dims=30, device='cpu'):
     criterion = torch.nn.BCELoss()
-    D_optimizer = torch.optim.Adam(discriminator.parameters(), lr=lr)
-    G_optimizer = torch.optim.Adam(generator.parameters(), lr=lr)
+    D_optimizer = torch.optim.RMSprop(discriminator.parameters(), lr=lr)
+    G_optimizer = torch.optim.RMSprop(generator.parameters(), lr=lr)
 
     for epoch in range(max_epochs):
         dl = 0
@@ -68,12 +68,12 @@ def train_gan(generator, discriminator, train_dl, test_dl, max_epochs=30, lr=0.0
             x, y = x.to(device), y.to(device)
             noise = torch.randn((x.shape[0], embed_dims), device=device)
 
-            fake = generator(noise)
-            stacked = torch.concat([x, fake], dim=0)
+            fake = generator(noise[::2])
+            stacked = torch.concat([x[::2], fake], dim=0)
 
             pred = discriminator(stacked)
 
-            loss = criterion(pred, torch.concat([torch.ones(x.shape[0], 1, device=device), torch.zeros(x.shape[0], 1, device=device)], dim=0) )
+            loss = criterion(pred, torch.concat([torch.ones(x[::2].shape[0], 1, device=device), torch.zeros(fake.shape[0], 1, device=device)], dim=0) )
 
             G_optimizer.zero_grad()
             D_optimizer.zero_grad()
@@ -106,7 +106,7 @@ def save_image(data, epoch, N=8):
     fig, ax = plt.subplots(N, 1)
 
     for i in range(N):
-        ax[i].imshow(data[i,0].cpu().detach().numpy())
+        ax[i].imshow(data[i,0].cpu().detach().numpy(), cmap='gray', vmin=0, vmax=1)
 
     plt.savefig(f'generated/{epoch}.png')
     plt.close()
