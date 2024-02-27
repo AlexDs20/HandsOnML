@@ -77,7 +77,7 @@ def train(model: nn.Module, data: DataLoader, valid_data: DataLoader=None, lr=0.
 
             logits = model(x)
 
-            loss = ((x - logits)**2).sum() + model.encoder.kl
+            loss = ((x - logits)**2).sum().mean() + model.encoder.kl
 
             loss.backward()
 

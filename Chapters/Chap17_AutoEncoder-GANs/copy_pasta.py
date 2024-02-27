@@ -59,9 +59,12 @@ class VariationalEncoder(nn.Module):
         x = torch.flatten(x, start_dim=1)
         x = F.relu(self.linear1(x))
         mu =  self.linear2(x)
-        sigma = torch.exp(self.linear3(x))
-        z = mu + sigma*self.N.sample(mu.shape)
-        self.kl = (sigma**2 + mu**2 - torch.log(sigma) - 1/2).sum()
+        #sigma = torch.exp(self.linear3(x))
+        log_var = torch.exp(self.linear3(x))
+        # z = mu + sigma * self.N.sample(mu.shape)
+        z = mu + torch.exp(log_var/2) * self.N.sample(mu.shape)
+        # self.kl = (sigma**2 + mu**2 - torch.log(sigma) - 1/2).sum()
+        self.kl = -0.5 * (1 + log_var - torch.exp(log_var) - mu**2).sum(dim=1).mean(dim=0)
         return z
 
 class VariationalAutoencoder(nn.Module):
@@ -162,27 +165,26 @@ def interpolate_gif(autoencoder, filename, x_1, x_2, n=100):
         append_images=images_list[1:],
         loop=1)
 
-latent_dims = 2
-#autoencoder = Autoencoder(latent_dims).to(device) # GPU
-autoencoder = VariationalAutoencoder(latent_dims).to(device)
+if __name__ == "__main__":
+    latent_dims = 2
+    #autoencoder = Autoencoder(latent_dims).to(device) # GPU
+    autoencoder = VariationalAutoencoder(latent_dims).to(device)
 
-data = torch.utils.data.DataLoader(
-        torchvision.datasets.MNIST('../Chap16_NLP_with_RNN_and_Attention/data/',
-               transform=torchvision.transforms.ToTensor(),
-               download=False),
-        batch_size=512,
-        shuffle=True)
+    data = torch.utils.data.DataLoader(
+            torchvision.datasets.MNIST('../Chap16_NLP_with_RNN_and_Attention/data/',
+                   transform=torchvision.transforms.ToTensor(),
+                   download=True),
+            batch_size=512,
+            shuffle=True)
 
-autoencoder = train(autoencoder, data)
+    autoencoder = train(autoencoder, data)
 
-plot_latent(autoencoder, data)
-plot_reconstructed(autoencoder, r0=[-20, 20], r1=[-20, 20])
+    plot_latent(autoencoder, data)
+    plot_reconstructed(autoencoder, r0=[-20, 20], r1=[-20, 20])
 
-x, y = next(iter(data))
-x_1 = x[y == 1][1].to(device) # find a 1
-x_2 = x[y == 0][1].to(device) # find a 0
+    x, y = next(iter(data))
+    x_1 = x[y == 1][1].to(device) # find a 1
+    x_2 = x[y == 0][1].to(device) # find a 0
 
-interpolate(autoencoder, x_1, x_2, n=20)
-interpolate_gif(autoencoder, "/mnt/d/tmp/autoencoder", x_1, x_2)
-
-
+    interpolate(autoencoder, x_1, x_2, n=20)
+    interpolate_gif(autoencoder, "/mnt/d/tmp/autoencoder", x_1, x_2)
